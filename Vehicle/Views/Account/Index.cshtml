@@ -1,0 +1,72 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+<style>
+    .hidden {
+        display: none;
+    }
+</style>
+<div class="app-main__inner">
+    <div class="app-page-title">
+        <div class="page-title-wrapper">
+            <div class="page-title-heading">
+                <div class="page-title-icon">
+                    <i class="pe-7s-add-user icon-gradient bg-mean-fruit">
+                    </i>
+                </div>
+                <div>
+                    Login
+                    <div class="page-title-subheading">
+                        Enter your Login details.
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="col-md-12 hidden" id="error">
+        <div class="alert alert-warning fade show" role="alert">
+            <h5>Error!</h5>
+            <p class="mb-0" id="msg"></p>
+        </div>
+    </div>
+    <div class="main-card mb-2 card">
+        <div class="card-body">
+            <h5 class="card-title">LOGIN</h5>
+            <div class="">
+
+                <div class="form-row">
+                    <div class="col-md-4">
+                        <div class="position-relative form-group"><label for="login_name" class="">Login Name</label><input name="login_name" placeholder="enter login name" id="login_name" type="text" class="form-control"></div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="position-relative form-group"><label for="password" class="">Password</label><input name="password" id="password" placeholder="enter password" type="password" class="form-control"></div>
+                    </div>
+
+                </div>
+                <div class="form-row">
+                    @*<div class="col-md-4">
+                        <div class="position-relative form-group"><a href="/account/register">Register</a></div>
+                    </div>*@
+                    <div class="col-md-4">
+                        <div class="position-relative form-group"><a href="/account/forgot">Forgot Password</a></div>
+                    </div>
+
+                </div>
+                 
+                <span id=" error" class="text-danger pull-right"></span>
+                <a id="btnLoginUser" href="javascript:Login();" class="mt-2 btn btn-primary pull-right">Login</a>
+                <button type="button" id="processor" class="btn-open-options btn btn-warning pull-right hidden">
+                    <i class="fa fa-cog fa-w-16 fa-spin fa-2x"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
