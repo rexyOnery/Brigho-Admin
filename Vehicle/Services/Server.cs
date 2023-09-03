@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.VisualStudio.Web.CodeGeneration.Contracts.Messaging;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -188,7 +189,7 @@ namespace Vehicle.Services
                 if (_data != null)
                 {
                     Random random = new Random();
-                    string code = random.Next(10000, 99999).ToString();
+                    string code = random.Next(1000, 9999).ToString();
                     _data.RecoveryCode = code;
                     _context.Logins.Update(_data);
                     _context.SaveChanges();
@@ -201,13 +202,12 @@ namespace Vehicle.Services
 
         internal static bool GetConfirmedCode(string code, string email)
         {
-            var _data = GetUserData<Login>().Result.Where(c => c.Phone.Equals(email));
+            var _data = GetUserData<Login>().Result.Where(c => c.Phone.Equals(email) && c.RecoveryCode.Equals(code)) ;
             if (_data != null)
             {
-                if (_data.FirstOrDefault().RecoveryCode.Equals(code))
-                {
+                 
                     return true;
-                }
+                 
             }
             return false;
         }
@@ -231,9 +231,9 @@ namespace Vehicle.Services
             using (var _context = new DB_A5DE44_HoldingContext())
             {
                 var _trns = _context.Ahhttransactions
-                    .Sum(c => Convert.ToInt32(c.TotalCost)).ToString();
+                    .Sum(c => Convert.ToInt32(c.TotalCost));
 
-                return _trns;
+                return Convert.ToInt32(_trns * 2000).ToString();
             }
         }
 
@@ -371,6 +371,52 @@ namespace Vehicle.Services
 
                 return false;
 
+            }
+        }
+
+        internal static bool SendCode2Email(RecoverMailModel model)
+        {
+            MailMessage m = new MailMessage();
+            SmtpClient sc = new SmtpClient();
+            m.From = new MailAddress("contact@brigho.com");
+            m.To.Add(model.EmailAddress.ToLower());
+            m.Subject = model.Title;
+            m.Body = model.MessageContent;
+            m.IsBodyHtml = true;
+            sc.Host = "mail.brigho.com";
+            string str1 = "gmail.com";
+            string str2 = model.EmailAddress.ToLower();
+            if (str2.Contains(str1))
+            {
+                try
+                {
+                    sc.Port = 8889;
+                    sc.Credentials = new System.Net.NetworkCredential("contact@brigho.com", "Stefny101.Brigho2021");
+                    sc.EnableSsl = false;
+                    sc.Send(m);
+                    return true;
+                }
+                catch (Exception e)
+                {
+                    var err = e;
+                    return false;
+                }
+            }
+            else
+            {
+                try
+                {
+                    sc.Port = 25;
+                    sc.Credentials = new System.Net.NetworkCredential("contact@brigho.com", "Stefny101.Brigho2021");
+                    sc.EnableSsl = false;
+                    sc.Send(m);
+                    return true;
+                }
+                catch (Exception e)
+                {
+                    var s = e.ToString();
+                    return false;
+                }
             }
         }
         // private static Vitsitem TagDTO(Vitsitem user) =>

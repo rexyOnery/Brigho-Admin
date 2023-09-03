@@ -13,4 +13,9 @@ namespace Vehicle.Models
         public string RecoveryCode { get; set; }
         public string UserType { get; set; }
     }
+
+    public class RecoverModel
+    {
+        public string Email { get; set; }
+    }
 }

@@ -17,165 +17,51 @@ function Logout() {
     location.href = "/account";
 }
 
-var addagents = function () {
-
-    $("#error").addClass('hidden');
-    $("#success").addClass('hidden');
-
-    if (document.getElementById("firstname").value == "") {
-        $("#msg").html("Please enter first name");
-        $("#error").removeClass('hidden');
-        $("#firstname").focus();
-        setInterval(function () { ClearAll(); }, 10000);
-        return false;
-    }
-
-    if (document.getElementById("lastname").value == "") {
-        $("#msg").html("Please enter last name");
-        $("#error").removeClass('hidden');
-        $("#lastname").focus();
-        setInterval(function () { ClearAll(); }, 10000);
-        return false;
-    }
-
-    if (document.getElementById("login_name").value == "") {
-        $("#msg").html("Please enter the login name");
-        $("#error").removeClass('hidden');
-        $("#login_name").focus();
-        setInterval(function () { ClearAll(); }, 10000);
-        return false;
-    }
-
-    if (document.getElementById("password").value == "") {
-        $("#msg").html("Please enter the password");
-        $("#error").removeClass('hidden');
-        $("#password").focus();
-        setInterval(function () { ClearAll(); }, 10000);
-        return false;
-    }
-
-    if (document.getElementById("repassword").value == "") {
-        $("#msg").html("Please enter re-enter the password");
-        $("#error").removeClass('hidden');
-        $("#repassword").focus();
-        setInterval(function () { ClearAll(); }, 10000);
-    }
-    if (document.getElementById("password").value != document.getElementById("repassword").value) {
-        $("#msg").html("The Password and Confirm Password does not match");
-        $("#error").removeClass('hidden');
-        $("#repassword").focus();
-        setInterval(function () { ClearAll(); }, 10000);
-        return false;
-    }
-
-    if (document.getElementById("email").value == "") {
-        $("#msg").html("Please enter email address");
-        $("#error").removeClass('hidden');
-        $("#phone").focus();
-        setInterval(function () { ClearAll(); }, 10000);
-        return false;
-    }
-
-    if (!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(document.getElementById("email").value))) {
-        $("#msg").html("Please enter a valid email address");
-        $("#error").removeClass('hidden');
-        $("#phone").focus();
-        setInterval(function () { ClearAll(); }, 10000);
-        return false;
-    }
-
-     
-
-
-    $("#processor").removeClass("hidden");
-    $("#btnRegisterUser").addClass("hidden");
-
-    var formdata = {
-        "FirstName": document.getElementById("firstname").value,
-        "LastName": document.getElementById("lastname").value,
-        "LoginName": document.getElementById("login_name").value,
-        "Password": document.getElementById("password").value,
-        "UserType": document.getElementById("usertype").value,
-        "Phone": document.getElementById("email").value,
-
-    };
-
-    $("#btnRegisterUser").prop("disabled", true);
-    $.ajax({
-        type: "POST",
-        url: "/Account/AddUser",
-        data: formdata,
-        success: function (data) {
-            setInterval(function () { ClearAll(); }, 10000);
-            if (!data) {
-                $("#msg").html("User name already in use. Please try again");
-                $("#error").removeClass('hidden');
-                $("#processor").addClass("hidden");
-                $("#btnRegisterUser").removeClass("hidden");
-                $("#btnRegisterUser").prop("disabled", false);
-            } else {
-
-                $("#msgs").html("User successfully registered!");
-                $("#success").removeClass('hidden');
-                $("#processor").addClass("hidden");
-                $("#btnRegisterUser").removeClass("hidden");
-                $("#btnRegisterUser").prop("disabled", false);
-                //location.href = "/admin";
-            }
-        },
-        error: function (req, status, error) {
-            setInterval(function () { ClearAll(); }, 10000);
-            $("#msg").html("User name may already be in use. Please try again");
-            $("#error").removeClass('hidden');
-            $("#success").addClass('hidden');
-            $("#processor").addClass("hidden");
-            $("#btnRegisterUser").removeClass("hidden");
-            $("#btnRegisterUser").prop("disabled", false);
-        }
-    });
-}
 
 var Login = function () {
     if (document.getElementById("login_name").value == "") {
-        $("#msg").html("Please enter the phone number");
-        $("#error").removeClass('hidden');
+        $("#msg").html("Please enter the login name"); 
         $("#login_name").focus();
-        setInterval(function () { ClearAll(); }, 10000);
+        setTimeout(() => {
+            $("#msg").html("");
+        }, 10000);
         return false;
     }
 
     if (document.getElementById("password").value == "") {
-        $("#msg").html("Please enter the password");
-        $("#error").removeClass('hidden');
+        $("#msg").html("Please enter the password"); 
         $("#password").focus();
-        setInterval(function () { ClearAll(); }, 10000);
+        setTimeout(() => {
+            $("#msg").html("");
+        }, 10000);
         return false;
     }
-
-    $("#processor").removeClass("hidden");
-    $("#btnLoginUser").addClass("hidden");
+     
+    
     var _data = {
         Username: document.getElementById("login_name").value,
         Password: document.getElementById("password").value
     };
 
-    $("#btnLoginUser").prop("disabled", true);
+    $("#btnLoginUser").attr("disabled", "disabled");
+    $("#btnLoginUser").val("Signing you in..."); 
+    //document.getElementById("btnLoginUser").value = "Signing you in...";
     $.ajax({
-        type: "GET",
+        type: "POST",
         url: "/Account/login",
         data: _data,
-        success: function (data) {
-            console.log(data);
-
+        success: function (data) {           
+             
             data.forEach(item => {
 
                 if (item.username == "No Login") {
-                    $("#msg").html("Invalid username or password. Please try again");
-                    $("#error").removeClass('hidden');
-                    $("#processor").addClass("hidden");
-                    $("#btnLoginUser").removeClass("hidden");
-                    $("#btnLoginUser").prop("disabled", false);
-                    setInterval(function () { ClearAll(); }, 10000);
+                    $("#msg").html("Invalid username or password. Please try again"); 
+                    $("#btnLoginUser").val("..."); 
+                    setTimeout(() => {
+                        $("#msg").html("");
+                        $("#btnLoginUser").val("Sign In..."); 
+                        $("#btnLoginUser").attr("disabled", false);
+                    }, 10000);
                 } else {
                     if (item.userType == "super") {
                         localStorage.setItem("super", item.usertype);
@@ -192,25 +78,27 @@ var Login = function () {
                             localStorage.setItem("procby", item.recoveryCode);
                             location.href = "/";
                         } else {
-                            $("#msg").html("invalid username or password. please try again");
-                            $("#error").removeClass('hidden');
-                            $("#processor").addClass("hidden");
-                            $("#btnloginuser").removeClass("hidden");
-                            $("#btnloginuser").prop("disabled", false);
+                            $("#msg").html("Invalid username or password. Please try again");
+                            $("#btnLoginUser").val("..."); 
+                            setTimeout(() => {
+                                $("#msg").html("");
+                                $("#btnLoginUser").attr("disabled", false);
+                                $("#btnLoginUser").val("Sign In"); 
+                            }, 10000);
                         }
                     }
                 }
             });
 
         },
-        error: function (req, status, error) {
-            setInterval(function () { ClearAll(); }, 10000);
+        error: function (req, status, error) { 
             $("#msg").html("Invalid username or password. Please try again");
-            $("#error").removeClass('hidden');
-            $("#processor").addClass("hidden");
-            $("#btnLoginUser").removeClass("hidden");
-            $("#btnLoginUser").prop("disabled", false);
-            setInterval(function () { ClearAll(); }, 10000);
+            $("#btnLoginUser").val("..."); 
+            setTimeout(() => {
+                $("#msg").html("");
+                $("#btnLoginUser").attr("disabled", false);
+                $("#btnLoginUser").val("Sign In"); 
+            }, 10000);
         }
     });
 }
@@ -230,7 +118,7 @@ if ($("#inprogress").length > 0) {
 
         dataType: "json",
         success: function (data) {
-            console.log(data);
+             
             if (!Object.keys(data).length) {
                 $("#processor").addClass("hidden");
             } else {
@@ -471,7 +359,7 @@ if ($("#complete").length > 0) {
 
         dataType: "json",
         success: function (data) {
-            console.log(data);
+             
             if (!Object.keys(data).length) {
                 $("#processor").addClass("hidden");
             } else {
@@ -566,16 +454,16 @@ if ($("#complete").length > 0) {
 }
 
 var getTotalCash = () => {
-
-    
+     
     $.ajax({
         type: "GET",
-        url: "/Home/GetTotalCash/",
+        url: "/Home/GetTotalCash",
         contentType: "application/json; charset=utf-8",
 
         dataType: "json",
         success: function (data) {
-            $("#price").html(formatMoney(parseFloat(data)));
+           
+            $("#_price_").html(formatMoney(parseFloat(data)));
         }
     });
 }
@@ -590,7 +478,7 @@ if ($("#returned").length > 0) {
 
         dataType: "json",
         success: function (data) {
-            console.log(data);
+           
             if (!Object.keys(data).length) {
                 $("#processor").addClass("hidden");
             } else {
@@ -691,7 +579,7 @@ if ($("#cancelled").length > 0) {
 
         dataType: "json",
         success: function (data) {
-            console.log(data);
+          
             if (!Object.keys(data).length) {
                 $("#processor").addClass("hidden");
             } else {
@@ -737,7 +625,7 @@ if ($("#deleted").length > 0) {
 
         dataType: "json",
         success: function (data) {
-            console.log(data);
+            
             if (!Object.keys(data).length) {
                 $("#processor").addClass("hidden");
             } else {
@@ -787,7 +675,7 @@ if ($("#board").length > 0) {
         data: { id: agentid },
         dataType: "json",
         success: function (data) {
-            console.log(data);
+            
             data.forEach(item => {
                 $("#totalIncome").html(item.accrued);
                 $("#totalActive").html(item.activeCustomers);
@@ -917,7 +805,7 @@ var ReconcilePayment = function () {
         type: "GET",
         url: "/Resolve/ProcessPay?trans=" + _data,
         success: function (data) {
-            console.log(data);
+            
             if (data == true) {
                 $("#msgs").html("Payment was successfuly processed!");
                 $("#success").removeClass('hidden');
@@ -949,72 +837,69 @@ var ReconcilePayment = function () {
 
 var forgotLogin = function () {
 
-    $("#error").addClass('hidden');
-    $("#success").addClass('hidden');
-
+    
     if (document.getElementById("login_name").value == "") {
-        $("#msg").html("please enter your email address");
-        $("#error").removeClass('hidden');
-        setInterval(function () { ClearAll(); }, 10000);
+        $("#msg").html("please enter your email address"); 
+        setTimeout(() => {
+            $("#msg").html(""); 
+        }, 10000);
         return false;
     }
-
-    $("#processor").removeClass("hidden");
-    $("#btnForgot").addClass("hidden");
-    var _data = {
-        Phone: document.getElementById("login_name").value
-    };
-
-    $("#btnForgot").prop("disabled", true);
-
+      
+    
     var emailVal =document.getElementById("login_name").value.trim();
     
-    var requestOptions = {
-        method: 'GET',
-        redirect: 'follow'
-    };
-
      
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
 
-    fetch("/api/remember/recoverpassword/"+ emailVal , {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json',
-        } 
-    })
-        .then(response => response.json())
-        .then(data => {
+    var _data = {
+        Email: emailVal 
+    };
+     
+    $("#btnForgot").attr("disabled", "disabled");
+    $("#btnForgot").val("Retrieving..."); 
+
+    $.ajax({
+        type: "GET",
+        url: "/Account/Recover",
+        data: _data,
+        success: function (data) {
             if (data != "") {
 
                 SendMail(data);
 
             } else {
+                $("#msg").html("Could not retrieve password. Please try again");
+                $("#btnLoginUser").val("...");
+                setTimeout(() => {
+                    $("#msg").html("");
+                    $("#btnForgot").attr("disabled", false);
+                    $("#btnForgot").val("Recover");
+                }, 10000);
 
-                setInterval(function () { ClearAll(); }, 10000);
-                $("#msg").html("Something went wrong. Please try again");
-                $("#error").removeClass('hidden');
-                $("#processor").addClass("hidden");
-                $("#btnForgot").removeClass("hidden");
-                $("#btnForgot").prop("disabled", false);
 
             }
-        }).catch(error => {
-            setInterval(function () { ClearAll(); }, 10000);
-            $("#msg").html("Something went wrong. Please try again.");
-            $("#error").removeClass('hidden');
-            $("#processor").addClass("hidden");
-            $("#btnForgot").removeClass("hidden");
-            $("#btnForgot").prop("disabled", false);
-        })
-     
+        },
+        error: function (req, status, error) {
+            $("#msg").html("Something went wrong. Please try again");
+            $("#btnLoginUser").val("...");
+            setTimeout(() => {
+                $("#msg").html("");
+                $("#btnForgot").attr("disabled", false);
+                $("#btnForgot").val("Recover");
+            }, 10000);
+        }
+    })
+          
 }
 
 
 var SendMail = (val) => {
-     console.log("Val: "+val)
+     
     $.ajax({
         type: "POST",
-        url: "http://mobile.brigho.com/utility/SendAdminCodeMessage/",
+        url: "/Account/RecoverMailAddress",
         data: {
             'MessageContent': "Your Admin Password Recovery Code: " + val,
             'Title': "Password Recovery",
@@ -1023,24 +908,39 @@ var SendMail = (val) => {
         },
         dataType: "json",
         success: function (data) {
-            console.log("returned data: " + data);
+            
             if (!data) {
-                console.log("falsy: " + data);
+                $("#msg").html("We could not recover your password now. Try again later");
+                $("#btnLoginUser").val("...");
+                setTimeout(() => {
+                    $("#msg").html("");
+                    $("#btnForgot").attr("disabled", false);
+                    $("#btnForgot").val("Recover");
+                }, 10000);
             }
             else {
 
-                $("#msgs").html("Password reset details has been sent to your email");
-                $("#success").removeClass('hidden');
-                $("#processor").addClass("hidden");
-                $("#btnForgot").removeClass("hidden");
-                $("#btnForgot").prop("disabled", false);
-
-                location.href = "/account/confirmcode?email=" + $("#login_name").val();
+                $("#count_down").html("Password reset details has been sent to your email");
+                $("#btnLoginUser").val("...");
+                setTimeout(() => {
+                    $("#msg").html("Check your enail while we redirect you to confirm code...");
+                    setTimeout(() => {
+                        location.href = "/account/confirmcode?email=" + $("#login_name").val();
+                    },5000)
+                }, 5000);
+                
+                
             }
         },
         error: function (err) {
-            console.log("error func: " + err);
-            setInterval(function () { ClearAll(); }, 10000);
+             
+            $("#msg").html("We could not recover your password now. Try again later");
+            $("#btnLoginUser").val("...");
+            setTimeout(() => {
+                $("#msg").html("");
+                $("#btnForgot").attr("disabled", false);
+                $("#btnForgot").val("Recover");
+            }, 10000);
         }
     });
 
@@ -1050,44 +950,66 @@ var ConfirmCode = function () {
 
     var _query = location.search.split('=');
     var _email = _query[1];
-    var code = document.getElementById("code_name").value;
+    var code_1 = document.getElementById("one").value;
+    var code_2 = document.getElementById("two").value;
+    var code_3 = document.getElementById("three").value;
+    var code_4 = document.getElementById("four").value;
 
-    if (document.getElementById("code_name").value == "") {
-        $("#msg").html("please enter the recovery code sent to your email");
-        $("#error").removeClass('hidden');
-        setInterval(function () { ClearAll(); }, 10000);
+    if (document.getElementById("one").value == "") {
+        $("#one").focus(); 
         return false;
     }
+    if (document.getElementById("two").value == "") {
+        $("#two").focus();
+        return false;
+    }
+    if (document.getElementById("three").value == "") {
+        $("#three").focus();
+        return false;
+    }
+    if (document.getElementById("four").value == "") {
+        $("#four").focus();
+        return false;
+    }
+     
+    $("#btnConfirmCode").attr("disabled", "disabled");
+    $("#btnConfirmCode").val("Verifying...");
+    let confirm_codes = code_1 + "" + code_2 + "" + code_3 + "" + code_4;
     
-    $("#processor").removeClass("hidden");
-    $("#btnForgot").addClass("hidden");
     var _data = {
         Phone: _email,
-        RecoveryCode: document.getElementById("code_name").value
+        RecoveryCode: confirm_codes
     }; 
-    $("#btnForgot").prop("disabled", true);
+     
     $.ajax({
-        type: "GET",
-        url: "/api/remember/confirmation/"+code+"/"+_email,        
+        type: "POST",
+        url: "/Account/CodeConfirmation",
+        data: _data,
         success: function (data) {
-            setInterval(function () { ClearAll(); }, 10000);
+
             if (data == true) {
                 location.href = "/account/changepassword?email=" + _email;
             } else {
                 $("#msg").html("Invalid Code. Please supply valid Code");
-                $("#error").removeClass('hidden');
-                $("#processor").addClass("hidden");
-                $("#btnForgot").removeClass("hidden");
-                $("#btnForgot").prop("disabled", false);
+                $("#btnConfirmCode").val("...");
+                setTimeout(() => {
+                    $("#msg").html("");
+                    $("#btnConfirmCode").attr("disabled", false);
+                    $("#btnConfirmCode").val("Verify");
+                }, 10000);
             }
         },
         error: function (req, status, error) {
-            setInterval(function () { ClearAll(); }, 10000);
-            $("#msg").html("Something went wrong. Please try again");
-            $("#error").removeClass('hidden');
-            $("#processor").addClass("hidden");
-            $("#btnForgot").removeClass("hidden");
-            $("#btnForgot").prop("disabled", false);
+            console.log(error)
+            console.log("stat: " + status)
+            console.log("req: " + JSON.stringify(req))
+            $("#msg").html("Something went wrong. Please try again"); 
+            $("#btnConfirmCode").val("...");
+            setTimeout(() => {
+                $("#msg").html("");
+                $("#btnConfirmCode").attr("disabled", false);
+                $("#btnConfirmCode").val("Verify");
+            }, 10000);
         }
     });
 }
@@ -1096,57 +1018,251 @@ var ConfirmCode = function () {
 var ChangePassword = function () {
      
     if (document.getElementById("pass").value == "") {
-        $("#msg").html("please enter your new password");
-        $("#error").removeClass('hidden');
-        setInterval(function () { ClearAll(); }, 10000);
+        $("#msg").html("please enter your new password");   
+        setTimeout(() => {
+            $("#msg").html("");
+        }, 10000);
+
         return false;
     }
     if (document.getElementById("pass_c").value == "") {
-        $("#msg").html("please confirm your new password");
-        $("#error").removeClass('hidden');
-        setInterval(function () { ClearAll(); }, 10000);
+        $("#msg").html("please confirm your new password"); 
+        setTimeout(() => {
+            $("#msg").html(""); 
+        }, 10000);
         return false;
     }
     var pass = document.getElementById("pass").value;
     var pass_c = document.getElementById("pass_c").value;
 
     if (pass != pass_c) {
-        $("#msg").html("Your new password and it's confirmation do not match");
-        $("#error").removeClass('hidden');
-        setInterval(function () { ClearAll(); }, 10000);
+        $("#msg").html("Your new password and it's confirmation do not match"); 
+        setTimeout(() => {
+            $("#msg").html(""); 
+        }, 10000); 
         return false;
     }
 
     var _query = location.search.split('=');
     var _email = _query[1];
 
-    $("#processor").removeClass("hidden");
-    $("#btnForgot").addClass("hidden");
-    
-    $("#btnForgot").prop("disabled", true);
+
+    $("#btnForgot").attr("disabled", "disabled");
+    $("#btnForgot").val("Saving Password..."); 
+
+    var _data = {
+        Email: _email,
+        Password: pass_c
+    };
+
     $.ajax({
         type: "POST",
-        url: "/api/remember/changepassword/" + pass_c + "/" + _email,       
+        url: "/Account/ChangePassowrd",
+        data: _data,
         success: function (data) {
-            setInterval(function () { ClearAll(); }, 10000);
+            
             if (data == true) {
                 location.href = "/account";
             } else {
-                $("#msg").html("Invalid Credentials. Please supply valid credentials");
-                $("#error").removeClass('hidden');
-                $("#processor").addClass("hidden");
-                $("#btnForgot").removeClass("hidden");
-                $("#btnForgot").prop("disabled", false);
+                $("#msg").html("Invalid Credentials. Please supply valid credentials"); 
+                $("#btnForgot").val("...");
+                setTimeout(() => {
+                    $("#msg").html("");
+                    $("#btnForgot").attr("disabled", false);
+                    $("#btnForgot").val("Save Password");
+                }, 10000);
+                 
             }
         },
         error: function (req, status, error) {
-            setInterval(function () { ClearAll(); }, 10000);
+             
             $("#msg").html("Something went wrong. Please try again");
-            $("#error").removeClass('hidden');
-            $("#processor").addClass("hidden");
-            $("#btnForgot").removeClass("hidden");
-            $("#btnForgot").prop("disabled", false);
+            $("#btnForgot").val("...");
+            setTimeout(() => {
+                $("#msg").html("");
+                $("#btnForgot").attr("disabled", false);
+                $("#btnForgot").val("Save Password");
+            }, 10000);
         }
     });
 }
 
+
+var showNext = (val) => {
+
+    if (val == 2) {
+        if (document.getElementById("firstname").value == "") {
+            $("#msg").html("please enter your first name");
+            $("#firstname").focus();
+            setTimeout(() => {
+                $("#msg").html("");
+            }, 10000);
+
+            return false;
+        }
+
+        if (document.getElementById("lastname").value == "") {
+            $("#msg").html("please enter your last name");
+            $("#lastname").focus();
+            setTimeout(() => {
+                $("#msg").html("");
+            }, 10000);
+            return false;
+        }
+
+        $("#step_1").hide('slow');
+        $("#step_2").show('slow');
+    }
+    if (val == 3) {
+        
+        if (document.getElementById("login_name").value == "") {
+            $("#msg").html("please enter your login name");
+            $("#login_name").focus();
+            setTimeout(() => {
+                $("#msg").html("");
+            }, 10000);
+            return false;
+        }
+        if (document.getElementById("password").value == "") {
+            $("#msg").html("please enter your password");
+            $("#password").focus();
+            setTimeout(() => {
+                $("#msg").html("");
+            }, 10000);
+
+            return false;
+        }
+
+
+        $("#step_2").hide('slow');
+        $("#step_3").show('slow'); 
+    }
+ }
+
+
+let addagents = function () {
+
+    //$("#error").addClass('hidden');
+    //$("#success").addClass('hidden');
+
+    //if (document.getElementById("firstname").value == "") {
+    //    $("#msg").html("Please enter first name");
+    //    $("#error").removeClass('hidden');
+    //    $("#firstname").focus();
+    //    setInterval(function () { ClearAll(); }, 10000);
+    //    return false;
+    //}
+
+    //if (document.getElementById("lastname").value == "") {
+    //    $("#msg").html("Please enter last name");
+    //    $("#error").removeClass('hidden');
+    //    $("#lastname").focus();
+    //    setInterval(function () { ClearAll(); }, 10000);
+    //    return false;
+    //}
+
+    //if (document.getElementById("login_name").value == "") {
+    //    $("#msg").html("Please enter the login name");
+    //    $("#error").removeClass('hidden');
+    //    $("#login_name").focus();
+    //    setInterval(function () { ClearAll(); }, 10000);
+    //    return false;
+    //}
+
+    //if (document.getElementById("password").value == "") {
+    //    $("#msg").html("Please enter the password");
+    //    $("#error").removeClass('hidden');
+    //    $("#password").focus();
+    //    setInterval(function () { ClearAll(); }, 10000);
+    //    return false;
+    //}
+
+    //if (document.getElementById("repassword").value == "") {
+    //    $("#msg").html("Please enter re-enter the password");
+    //    $("#error").removeClass('hidden');
+    //    $("#repassword").focus();
+    //    setInterval(function () { ClearAll(); }, 10000);
+    //}
+    //if (document.getElementById("password").value != document.getElementById("repassword").value) {
+    //    $("#msg").html("The Password and Confirm Password does not match");
+    //    $("#error").removeClass('hidden');
+    //    $("#repassword").focus();
+    //    setInterval(function () { ClearAll(); }, 10000);
+    //    return false;
+    //}
+
+    if (document.getElementById("email").value == "") {
+        $("#msg").html("Please enter email address"); 
+        $("#email").focus();
+        setTimeout(() => {
+            $("#msg").html("");
+        }, 10000);
+
+        return false;
+    }
+
+    if (!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(document.getElementById("email").value))) {
+        $("#msg").html("Please enter a valid email address"); 
+        $("#email").focus();
+        setTimeout(() => {
+            $("#msg").html("");
+        }, 10000);
+        return false;
+    }
+
+
+
+     
+    $("#btnRegisterUser").attr("disabled", "disabled");
+    $("#btnRegisterUser").val("Registering...");
+
+    var formdata = {
+        "FirstName": document.getElementById("firstname").value,
+        "LastName": document.getElementById("lastname").value,
+        "LoginName": document.getElementById("login_name").value,
+        "Password": document.getElementById("password").value,
+        "UserType": document.getElementById("usertype").value,
+        "Phone": document.getElementById("email").value,
+
+    };
+
+    $("#btnRegisterUser").prop("disabled", true);
+    $.ajax({
+        type: "POST",
+        url: "/Account/AddUser",
+        data: formdata,
+        success: function (data) {
+            setInterval(function () { ClearAll(); }, 10000);
+            if (!data) {
+                $("#msg").html("User name already in use. Please try again");
+                $("#btnRegisterUser").val("...");
+                setTimeout(() => {
+                    $("#msg").html("");
+                    $("#btnRegisterUser").prop("disabled", false);
+                    $("#btnRegisterUser").val("Create Account");
+                }, 10000);
+                return false;                
+                
+            } else {
+
+                $("#msgs").html("User successfully registered!");
+                $("#btnRegisterUser").val("...");
+                setTimeout(() => {
+                    $("#msg").html("");
+                    $("#btnRegisterUser").prop("disabled", false);
+                    $("#btnRegisterUser").val("Create Account");
+                }, 10000);
+            }
+        },
+        error: function (req, status, error) {
+            setInterval(function () { ClearAll(); }, 10000);
+            $("#msg").html("User name may already be in use. Please try again");
+            $("#btnRegisterUser").val("...");
+            setTimeout(() => {
+                $("#msg").html("");
+                $("#btnRegisterUser").prop("disabled", false);
+                $("#btnRegisterUser").val("Create Account");
+            }, 10000);
+        }
+    });
+}

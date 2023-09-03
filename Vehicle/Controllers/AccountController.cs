@@ -39,6 +39,29 @@ namespace Vehicle.Controllers
         { 
             return await Server.Login<Account>(account);
         }
+         
+        public async Task<string> Recover(EmailModel model)
+        {
+            string emailaddress = model.Email;
+            var _codec = Server.GetAccountLoginData<Login>(emailaddress);
+            return _codec;
+        }
+
+        public async Task<ActionResult<bool>> CodeConfirmation(ConfirmModel model)
+        {
+            return Server.GetConfirmedCode(model.Code, model.Email);
+        }
+
+        public async Task<bool> ChangePassowrd(ChangePasswordModel model)
+        {
+            return Server.ChangePassword(model.Password, model.Email);
+        }
+
+        public async Task<bool> RecoverMailAddress(RecoverMailModel model)
+        {
+            return Server.SendCode2Email(model);
+        }
+
 
         public async Task<ActionResult<bool>> AddUser(Login account)
         { 

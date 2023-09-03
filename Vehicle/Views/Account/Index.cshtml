@@ -1,11 +1,112 @@
-﻿
-@{
+﻿@{
     ViewData["Title"] = "Index";
-    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    Layout = null;// "~/Views/Shared/_AuthenticationLayout.cshtml";
 }
 
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-nav-layout="vertical" data-vertical-style="overlay" data-theme-mode="light" data-header-styles="light" data-menu-styles="light" data-toggled="close">
+
+<head>
+
+    <!-- Meta Data -->
+    <meta charset="UTF-8">
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Brigho Admin Dashboard </title>
+    <meta name="Description" content="Admin Dashboard for Brigh">
+    <meta name="Author" content="SoftTech Nigeria Limited">
+    <meta name="keywords" content="">
+
+    <!-- Favicon -->
+    <link rel="icon" href="/assets/images/brand-logos/fav.ico" type="image/x-icon">
+
+    <!-- Main Theme Js -->
+    <script src="/assets/js/authentication-main.js"></script>
+
+    <!-- Bootstrap Css -->
+    <link id="style" href="/assets/libs/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Style Css -->
+    <link href="/assets/css/styles.min.css" rel="stylesheet">
+
+    <!-- Icons Css -->
+    <link href="/assets/css/icons.min.css" rel="stylesheet">
+
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+
+</head>
+
+<body>
 
 
+
+ 
+    <div class="page error-bg" id="particles-js">
+        <div class="container">
+            <div class="row justify-content-center align-items-center authentication authentication-basic h-100">
+                <div class="col-xxl-4 col-xl-5 col-lg-5 col-md-6 col-sm-8 col-12">
+                    <div class="my-5 d-flex justify-content-center">
+                        <a href="#">
+                            <img src="~/x_assets/images/logo.png" alt="logo" class="desktop-logo">
+                            <img src="~/x_assets/images/logo-inverse.png" alt="logo" class="desktop-dark">
+                        </a>
+                    </div>
+                    <div class="card custom-card rectangle2">
+                        <div class="card-body p-5 rectangle3">
+                            <p class="h4 fw-semibold mb-2 text-center">Sign In</p>
+                            <p class="mb-4 text-muted op-7 fw-normal text-center">Welcome back !</p>
+                            <div class="row gy-3">
+                                <div class="col-xl-12">
+                                    <label for="login_name" class="form-label text-default">User Name</label>
+                                    <input type="text" class="form-control form-control-lg" id="login_name" placeholder="user name">
+                                </div>
+                                <div class="col-xl-12 mb-2">
+                                    <label for="password" class="form-label text-default d-block">Password<a href="/account/forgot" class="float-end text-primary">Forget password ?</a></label>
+                                    <div class="input-group">
+                                        <input type="password" class="form-control form-control-lg" id="password" placeholder="password">
+                                        <button class="btn btn-light bg-transparent" type="button" onclick="createpassword('password',this)" id="button-addon2"><i class="ri-eye-off-line align-middle"></i></button>
+                                    </div>
+                                    <div class="mt-2">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                                            <label class="form-check-label text-muted fw-normal" for="defaultCheck1">
+                                                Remember password ?
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-12 d-grid mt-2">
+                                    <input type="button" id="btnLoginUser" onclick="javascript:Login();" class="btn btn-lg btn-primary" value="Sign In" />
+                                </div>
+                            </div>
+                            <div class="text-center">
+                                <p class="fs-12 text-muted mt-3" id="msg"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    <!-- Custom-Switcher JS -->
+    <script type="text/javascript" src="/x_assets/scripts/main.js"></script>
+    <script type="text/javascript" src="~/js/site.js"></script>
+    <script src="~/jquery-3.6.0.min.js"></script>
+
+    <!-- Bootstrap JS -->
+    <script src="/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Show Password JS -->
+    <script src="/assets/js/show-password.js"></script>
+
+</body>
+
+</html>
+
+
+@*
 <style>
     .hidden {
         display: none;
@@ -50,15 +151,13 @@
 
                 </div>
                 <div class="form-row">
-                    @*<div class="col-md-4">
-                        <div class="position-relative form-group"><a href="/account/register">Register</a></div>
-                    </div>*@
+                    
                     <div class="col-md-4">
                         <div class="position-relative form-group"><a href="/account/forgot">Forgot Password</a></div>
                     </div>
 
                 </div>
-                 
+
                 <span id=" error" class="text-danger pull-right"></span>
                 <a id="btnLoginUser" href="javascript:Login();" class="mt-2 btn btn-primary pull-right">Login</a>
                 <button type="button" id="processor" class="btn-open-options btn btn-warning pull-right hidden">
@@ -67,6 +166,6 @@
             </div>
         </div>
     </div>
-</div>
+</div>*@
 
 

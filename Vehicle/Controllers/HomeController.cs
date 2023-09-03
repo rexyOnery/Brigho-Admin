@@ -48,10 +48,7 @@ namespace Vehicle.Controllers
             return Server.GetTotalCash<Ahhttransaction>();
         }
 
-        //public int Recover(string email)
-        //{
-        //   return Server.GetAccountLoginData(email);
-        //}
+        
 
         public IActionResult privacy()
         {

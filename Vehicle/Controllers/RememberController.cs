@@ -9,9 +9,10 @@ namespace Vehicle.Controllers
     [ApiController]
     public class RememberController : ControllerBase
     {
-        [HttpGet("recoverpassword/{emailaddress}")]
-        public async Task<string> RecoverPassword(string emailaddress)
+        [HttpPost("recoverpassword")]
+        public async Task<string> RecoverPassword(EmailModel model)
         {
+            string emailaddress = model.Email;
             var _codec = Server.GetAccountLoginData<Login>(emailaddress);
             return _codec;
         }
@@ -30,4 +31,6 @@ namespace Vehicle.Controllers
         }
 
     }
+
+    
 }
