@@ -69,7 +69,7 @@ var Login = function () {
                         localStorage.setItem("phone", item.username);
                         localStorage.setItem("procby", item.recoveryCode);
 
-                        location.href = "/";
+                        location.href = "/marketing/dashboard";
                     } else {
                         if (item.userType == "admin") {
                             localStorage.setItem("admin", item.usertype);
