@@ -141,7 +141,7 @@
                         </a>
                     </div>
                     <ul id="js-nav-menu" class="nav-menu">
-                        <li class="active open">
+                        <li id="intel" class="active open">
                             <a href="#" title="Brigho Intel" data-filter-tags="application intel">
                                 <i class="fal fa-info-circle"></i>
                                 <span class="nav-link-text" data-i18n="nav.application_intel">Brigho Intel</span>
@@ -161,36 +161,36 @@
                             </ul>
                         </li>
                          
-                        <li class="nav-title">Transaction & Utility</li>
+                        <li class="nav-title">Transaction & Reconciliation</li>
                           
-                        <li>
+                        <li id="main-trans">
                             <a href="#" title="Tables" data-filter-tags="tables">
                                 <i class="fal fa-th-list"></i>
                                 <span class="nav-link-text" data-i18n="nav.tables">Transactions</span>
                             </a>
                             <ul>
-                                <li>
-                                    <a href="tables_basic.html" title="Transactions in progress" data-filter-tags="tables basic tables">
+                                <li id="in-prog">
+                                    <a href="/transactions/inprogress" title="Transactions in progress" data-filter-tags="tables basic tables">
                                         <span class="nav-link-text" data-i18n="nav.tables_basic_tables">In-Progress</span>
                                     </a>
                                 </li>
-                                <li>
-                                    <a href="tables_generate_style.html" title="Completed transactions" data-filter-tags="tables generate table style">
+                                <li id="comp">
+                                    <a href="/transactions/completed" title="Completed transactions" data-filter-tags="tables generate table style">
                                         <span class="nav-link-text" data-i18n="nav.tables_generate_table_style">Completed</span>
                                     </a>
                                 </li>
-                                <li>
-                                    <a href="tables_basic.html" title="Returned Items" data-filter-tags="tables basic tables">
+                                <li id="ret">
+                                    <a href="/transactions/returned" title="Returned Items" data-filter-tags="tables basic tables">
                                         <span class="nav-link-text" data-i18n="nav.tables_basic_tables">Returned</span>
                                     </a>
                                 </li>
-                                <li>
-                                    <a href="tables_generate_style.html" title="Cancelled transactions" data-filter-tags="tables generate table style">
+                                <li id="canc">
+                                    <a href="/transactions/cancelled" title="Cancelled transactions" data-filter-tags="tables generate table style">
                                         <span class="nav-link-text" data-i18n="nav.tables_generate_table_style">Cancelled</span>
                                     </a>
                                 </li>
-                                <li>
-                                    <a href="tables_basic.html" title="Deleted Transactions" data-filter-tags="tables basic tables">
+                                <li id="dele">
+                                    <a href="/transactions/deleted" title="Deleted Transactions" data-filter-tags="tables basic tables">
                                         <span class="nav-link-text" data-i18n="nav.tables_basic_tables">Deleted</span>
                                     </a>
                                 </li>
@@ -199,7 +199,7 @@
                         <li>
                             <a href="#" title="Utilities" data-filter-tags="utilities">
                                 <i class="fal fa-bolt"></i>
-                                <span class="nav-link-text" data-i18n="nav.utilities">Utilities</span>
+                                <span class="nav-link-text" data-i18n="nav.utilities">Reconciliation</span>
                             </a>
                             <ul>
                                 <li>

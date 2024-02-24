@@ -1,0 +1,278 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = "~/Views/Shared/_SmartAdminLayout.cshtml";
+}
+
+<!-- BEGIN Page Content -->
+<!-- the #js-page-content id is needed for some plugins to initialize -->
+<main id="js-page-content" role="main" class="page-content">
+    <ol class="breadcrumb page-breadcrumb">
+        <li class="breadcrumb-item"><a href="javascript:void(0);">Brigho Admin</a></li>
+        <li class="breadcrumb-item">Transactions</li>
+        <li class="breadcrumb-item active">Returned</li>
+        <li class="position-absolute pos-top pos-right d-none d-sm-block"><span class="js-get-date"></span></li>
+    </ol>
+    <div class="subheader">
+        <h1 class="subheader-title">
+            <i class='subheader-icon fal fa-chart-area'></i> Transactions <span class='fw-300'>Returned</span>
+        </h1>
+
+    </div>
+
+    <div class="row">
+        <div class="col-xl-12">
+            <div id="panel-1" class="panel">
+                <div class="panel-hdr">
+                    <h2>
+                        Returned <span class="fw-300"><i>Transactions</i></span>
+                    </h2>
+                    <div class="panel-toolbar">
+                        <button class="btn btn-panel" data-action="panel-collapse" data-toggle="tooltip" data-offset="0,10" data-original-title="Collapse"></button>
+                        <button class="btn btn-panel" data-action="panel-fullscreen" data-toggle="tooltip" data-offset="0,10" data-original-title="Fullscreen"></button>
+                        <button class="btn btn-panel" data-action="panel-close" data-toggle="tooltip" data-offset="0,10" data-original-title="Close"></button>
+                    </div>
+                </div>
+                <div class="panel-container show">
+                    <div class="panel-content">
+                        <!-- datatable start -->
+                        <table id="dt-basic-example" class="table table-bordered table-hover table-striped w-100">
+                            <thead>
+                                <tr>
+                                    <th>Counter</th>
+                                    <th>Transaction.Number</th>
+                                    <th>Description</th>
+                                    <th>Transaction.Date</th>
+                                    <th>Buyer.Payment.Date</th>
+                                    <th>Seller.Bank</th>
+                                    <th>Buyer.Bank</th>
+                                    <th>Temporary.Status</th>
+                                    <th>Final.Status</th>
+                                    <th>Pay.To</th>
+                                    <th>Brigho.Payment.Date</th>
+                                    <th>Processed.By</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>298728508</td>
+                                    <td>Samuel A. Townsend</td>
+                                    <td>Ap #376-4611 Et St.</td>
+                                    <td>Togo</td>
+                                    <td>Monceau-sur-Sambre</td>
+                                    <td>Dorian Mcintyre</td>
+                                    <td>Gravida Molestie PC</td>
+                                    <td>00439892299</td>
+                                    <td>17.61388</td>
+                                    <td>96.86623</td>
+                                    <td>2019-10-06 21:27:12</td>
+                                    <td>30/05/18</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>298728508</td>
+                                    <td>Samuel A. Townsend</td>
+                                    <td>Ap #376-4611 Et St.</td>
+                                    <td>Togo</td>
+                                    <td>Monceau-sur-Sambre</td>
+                                    <td>Dorian Mcintyre</td>
+                                    <td>Gravida Molestie PC</td>
+                                    <td>00439892299</td>
+                                    <td>17.61388</td>
+                                    <td>96.86623</td>
+                                    <td>2019-10-06 21:27:12</td>
+                                    <td>30/05/18</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>298728508</td>
+                                    <td>Samuel A. Townsend</td>
+                                    <td>Ap #376-4611 Et St.</td>
+                                    <td>Togo</td>
+                                    <td>Monceau-sur-Sambre</td>
+                                    <td>Dorian Mcintyre</td>
+                                    <td>Gravida Molestie PC</td>
+                                    <td>00439892299</td>
+                                    <td>17.61388</td>
+                                    <td>96.86623</td>
+                                    <td>2019-10-06 21:27:12</td>
+                                    <td>30/05/18</td>
+                                    <td></td>
+                                </tr>
+
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th>Counter</th>
+                                    <th>Transaction.Number</th>
+                                    <th>Description</th>
+                                    <th>Transaction.Date</th>
+                                    <th>Buyer.Payment.Date</th>
+                                    <th>Seller.Bank</th>
+                                    <th>Buyer.Bank</th>
+                                    <th>Temporary.Status</th>
+                                    <th>Final.Status</th>
+                                    <th>Pay.To</th>
+                                    <th>Brigho.Payment.Date</th>
+                                    <th>Processed.By</th>
+                                    <th>Action</th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                        <!-- datatable end -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+@section Scripts {
+    <!-- END Page Settings -->
+    <!-- base vendor bundle:
+         DOC: if you remove pace.js from core please note on Internet Explorer some CSS animations may execute before a page is fully loaded, resulting 'jump' animations
+                    + pace.js (recommended)
+                    + jquery.js (core)
+                    + jquery-ui-cust.js (core)
+                    + popper.js (core)
+                    + bootstrap.js (core)
+                    + slimscroll.js (extension)
+                    + app.navigation.js (core)
+                    + ba-throttle-debounce.js (core)
+                    + waves.js (extension)
+                    + smartpanels.js (extension)
+                    + src/../jquery-snippets.js (core) -->
+    <script src="/smartadmin/js/vendors.bundle.js"></script>
+    <script src="/smartadmin/js/app.bundle.js"></script>
+    <!-- datatble responsive bundle contains:
+    + jquery.dataTables.js
+    + dataTables.bootstrap4.js
+    + dataTables.autofill.js
+    + dataTables.buttons.js
+    + buttons.bootstrap4.js
+    + buttons.html5.js
+    + buttons.print.js
+    + buttons.colVis.js
+    + dataTables.colreorder.js
+    + dataTables.fixedcolumns.js
+    + dataTables.fixedheader.js
+    + dataTables.keytable.js
+    + dataTables.responsive.js
+    + dataTables.rowgroup.js
+    + dataTables.rowreorder.js
+    + dataTables.scroller.js
+    + dataTables.select.js
+    + datatables.styles.app.js
+    + datatables.styles.buttons.app.js -->
+    <script src="/smartadmin/js/datagrid/datatables/datatables.bundle.js"></script>
+    <script>
+        $("#intel").removeClass('active open')
+        $("#main-trans").addClass('active open')
+
+        $("#md").removeClass('active')
+        $("#ret").addClass('active')
+        $(document).ready(function () {
+            // initialize datatable
+            var table = $('#dt-basic-example').dataTable(
+                {
+                    responsive: true,
+                    columnDefs: [
+                        {
+                            targets: -1,
+                            title: 'Admin Controls',
+                            orderable: false,
+                            render: function (data, type, full, meta) {
+
+                                /*
+                                -- ES6
+                                -- convert using https://babeljs.io online transpiler
+                                return `
+                                <div class='d-flex mt-2'>
+                                    <a href='javascript:void(0);' class='btn btn-sm btn-outline-danger mr-2' title='Delete Record'>
+                                        <i class="fal fa-times"></i> Delete Record
+                                    </a>
+                                    <a href='javascript:void(0);' class='btn btn-sm btn-outline-primary mr-2' title='Edit'>
+                                        <i class="fal fa-edit"></i> Edit
+                                    </a>
+                                    <div class='dropdown d-inline-block'>
+                                        <a href='#'' class='btn btn-sm btn-outline-primary mr-2' data-toggle='dropdown' aria-expanded='true' title='More options'>
+                                            <i class="fal fa-plus"></i>
+                                        </a>
+                                        <div class='dropdown-menu'>
+                                            <a class='dropdown-item' href='javascript:void(0);'>Change Status</a>
+                                            <a class='dropdown-item' href='javascript:void(0);'>Generate Report</a>
+                                        </div>
+                                    </div>
+                                </div>`;
+
+                                ES5 example below:
+
+                                */
+                                return "\n\t\t\t\t\t\t<div class='d-flex mt-2'>\n\t\t\t\t\t\t\t<a href='javascript:void(0);' class='btn btn-sm btn-outline-danger mr-2' title='Delete Record'><i class=\"fal fa-times\"></i> Delete Record</a>\n\t\t\t\t\t\t\t<a href='javascript:void(0);' class='btn btn-sm btn-outline-primary mr-2' title='Edit'><i class=\"fal fa-edit\"></i> Edit</a>\n\t\t\t\t\t\t\t<div class='dropdown d-inline-block'>\n\t\t\t\t\t\t\t\t<a href='#'' class='btn btn-sm btn-outline-primary mr-2' data-toggle='dropdown' aria-expanded='true' title='More options'><i class=\"fal fa-plus\"></i></a>\n\t\t\t\t\t\t\t\t<div class='dropdown-menu'>\n\t\t\t\t\t\t\t\t\t<a class='dropdown-item' href='javascript:void(0);'>Change Status</a>\n\t\t\t\t\t\t\t\t\t<a class='dropdown-item' href='javascript:void(0);'>Generate Report</a>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t</div>";
+                            },
+                        },
+                        {
+                            targets: 1,
+                            /*	The `data` parameter refers to the data for the cell (defined by the
+                                `data` option, which defaults to the column being worked with, in this case `data: 16`.*/
+                            render: function (data, type, full, meta) {
+                                var badge = {
+                                    1:
+                                    {
+                                        'title': 'Pending',
+                                        'class': 'badge-warning'
+                                    },
+                                    2:
+                                    {
+                                        'title': 'Delivered',
+                                        'class': 'badge-success'
+                                    },
+                                    3:
+                                    {
+                                        'title': 'Canceled',
+                                        'class': 'badge-secondary'
+                                    },
+                                    4:
+                                    {
+                                        'title': 'Attempt #1',
+                                        'class': 'bg-danger-100 text-white'
+                                    },
+                                    5:
+                                    {
+                                        'title': 'Attempt #2',
+                                        'class': 'bg-danger-300 text-white'
+                                    },
+                                    6:
+                                    {
+                                        'title': 'Failed',
+                                        'class': 'badge-danger'
+                                    },
+                                    7:
+                                    {
+                                        'title': 'Attention!',
+                                        'class': 'badge-primary'
+                                    },
+                                    8:
+                                    {
+                                        'title': 'In Progress',
+                                        'class': 'badge-success'
+                                    },
+                                };
+                                if (typeof badge[data] === 'undefined') {
+                                    return data;
+                                }
+                                return '<span class="badge ' + badge[data].class + ' badge-pill">' + badge[data].title + '</span>';
+                            },
+                        }],
+                });
+
+            /*window.onresize = function() {
+                table.responsive.rebuild();
+                table.responsive.recalc();
+            }*/
+
+        });
+    </script>
+}
