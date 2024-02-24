@@ -1,0 +1,172 @@
+﻿
+@{
+    ViewData["Title"] = "Forgot";
+    Layout =  null;// "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-nav-layout="vertical" data-vertical-style="overlay" data-theme-mode="light" data-header-styles="light" data-menu-styles="light" data-toggled="close">
+
+<head>
+
+    <!-- Meta Data -->
+    <meta charset="UTF-8">
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Brigho Admin Dashboard </title>
+    <meta name="Description" content="Admin Dashboard for Brigh">
+    <meta name="Author" content="SoftTech Nigeria Limited">
+    <meta name="keywords" content="">
+
+    <!-- Favicon -->
+    <link rel="icon" href="../assets/images/brand-logos/fav.ico" type="image/x-icon">
+
+    <!-- Main Theme Js -->
+    <script src="../assets/js/authentication-main.js"></script>
+
+    <!-- Bootstrap Css -->
+    <link id="style" href="../assets/libs/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Style Css -->
+    <link href="../assets/css/styles.min.css" rel="stylesheet">
+
+    <!-- Icons Css -->
+    <link href="../assets/css/icons.min.css" rel="stylesheet">
+
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+</head>
+
+<body>
+     
+    <div class="page error-bg" id="particles-js">
+        <!-- Start::error-page -->
+        <div class="error-page  ">
+            <div class="container">
+                <!-- Start::row-1 -->
+                <div class="row align-items-center justify-content-center authentication authentication-basic">
+                    <div class="col-xxl-4 col-xl-5 col-lg-5 col-md-6 col-sm-8 col-12">
+                        <div class="my-5 d-flex justify-content-center">
+                            <a href="index.html">
+                                <img src="~/x_assets/images/logo.png" alt="logo" class="desktop-logo"> 
+                            </a>
+                        </div>
+                        <div class="card custom-card rectangle2">
+                            <div class="card-body p-5 rectangle3">
+                                <p class="h5 fw-semibold mb-2 text-center">Recover Password</p>
+                                <p class="mb-3 text-muted op-7 fw-normal text-center">Hello there !</p>
+                                 
+                                <div class="row gy-3">
+                                    <div class="col-xl-12 mb-2">
+                                        <label for="login_name" class="form-label text-default">Email Address</label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control form-control-lg" id="login_name" placeholder="e-mail address">
+                                            
+                                        </div>
+                                         
+                                    </div>
+                                    <div class="col-xl-12 d-grid mt-2">
+                                        <input type="button" onclick="forgotLogin()" class="btn btn-primary" value="Recover" id="btnForgot" />
+                                    </div>
+                                </div>
+                                <div class="text-center">
+                                    <p class="fs-12 text-muted mt-3 mb-0">
+                                        <div class="text-success" id="msg"></div> <br />
+                                        <div class="text-success" id="count_down"></div>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--End::row-1 -->
+            </div>
+        </div>
+        <!-- End::error-page -->
+
+    </div>
+
+
+    <script type="text/javascript" src="/assets/scripts/main.js"></script>
+    <script type="text/javascript" src="~/js/site.js"></script>
+    <script src="~/jquery-3.6.0.min.js"></script>
+
+    <!-- Bootstrap JS -->
+    <script src="/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Bootstrap JS -->
+    <script src="../assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Show Password JS -->
+    <script src="../assets/js/show-password.js"></script>
+
+</body>
+
+</html>
+<style>
+    .hidden {
+        display: none;
+    }
+</style>@*
+<div class="app-main__inner">
+    <div class="app-page-title">
+        <div class="page-title-wrapper">
+            <div class="page-title-heading">
+                <div class="page-title-icon">
+                    <i class="pe-7s-add-user icon-gradient bg-mean-fruit">
+                    </i>
+                </div>
+                <div>
+                    Password Recovery
+                    <div class="page-title-subheading">
+                        Enter your recovery details.
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="col-md-12 hidden" id="error">
+        <div class="alert alert-warning fade show" role="alert">
+            <h5>Error!</h5>
+            <p class="mb-0" id="msg"></p>
+        </div>
+    </div>
+    <div class="col-md-12 hidden" id="success">
+        <div class="alert alert-success fade show" role="alert">
+            <h5>Mail Sent!</h5>
+            <p class="mb-0" id="msgs"></p>
+        </div>
+    </div>
+    <div class="main-card mb-2 card">
+        <div class="card-body">
+            <h5 class="card-title">RECOVER PASSWORD</h5>
+            <div class="">
+
+                <div class="form-row">
+                    <div class="col-md-4">
+                        <div class="position-relative form-group"><label for="login_name" class="">Email</label><input name="login_name" placeholder="enter email address" id="login_name" type="text" class="form-control"></div>
+                    </div>
+
+                </div>
+                <div class="form-row">
+                    @*<div class="col-md-4">
+                        <div class="position-relative form-group"><a href="/account/register">Register</a></div>
+                    </div>* 
+                    <div class="col-md-4">
+                        <div class="position-relative form-group"><a href="/account/">Login</a></div>
+                    </div>
+
+                </div>
+                <span id=" error" class="text-danger pull-right"></span>
+                <a id="btnForgot" href="javascript:forgotLogin();" class="mt-2 btn btn-primary pull-right">Recover</a>
+                <button type="button" id="processor" class="btn-open-options btn btn-warning pull-right hidden">
+                    <i class="fa fa-cog fa-w-16 fa-spin fa-2x"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+*@
+
+

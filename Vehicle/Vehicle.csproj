@@ -1,0 +1,204 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UserSecretsId>478a278b-86c2-45ea-b827-cf435fe9938e</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Controllers\ActionsController.cs" />
+    <Compile Remove="Controllers\AdminController.cs" />
+    <Compile Remove="Controllers\AgentController.cs" />
+    <Compile Remove="Controllers\UsersController.cs" />
+    <Compile Remove="Controllers\vitsController.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="Views\Shared\_AuthenticationLayout.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Views\Shared\_AuthenticationLayout.cshtml" />
+    <None Include="wwwroot\js\site.js" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.min.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap.min.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.js" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.js.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.min.js" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.min.js.map" />
+    <None Include="wwwroot\lib\bootstrap\LICENSE" />
+    <None Include="wwwroot\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.js" />
+    <None Include="wwwroot\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.min.js" />
+    <None Include="wwwroot\lib\jquery-validation\dist\additional-methods.js" />
+    <None Include="wwwroot\lib\jquery-validation\dist\additional-methods.min.js" />
+    <None Include="wwwroot\lib\jquery-validation\dist\jquery.validate.js" />
+    <None Include="wwwroot\lib\jquery-validation\dist\jquery.validate.min.js" />
+    <None Include="wwwroot\lib\jquery-validation\LICENSE.md" />
+    <None Include="wwwroot\lib\jquery\dist\jquery.js" />
+    <None Include="wwwroot\lib\jquery\dist\jquery.min.js" />
+    <None Include="wwwroot\lib\jquery\dist\jquery.min.map" />
+    <None Include="wwwroot\smartadmin\css\app.bundle.css.map" />
+    <None Include="wwwroot\smartadmin\css\datagrid\datatables\datatables.bundle.css.map" />
+    <None Include="wwwroot\smartadmin\css\fa-brands.css.map" />
+    <None Include="wwwroot\smartadmin\css\fa-duotone.css.map" />
+    <None Include="wwwroot\smartadmin\css\fa-light.css.map" />
+    <None Include="wwwroot\smartadmin\css\fa-regular.css.map" />
+    <None Include="wwwroot\smartadmin\css\fa-solid.css.map" />
+    <None Include="wwwroot\smartadmin\css\formplugins\bootstrap-colorpicker\bootstrap-colorpicker.css.map" />
+    <None Include="wwwroot\smartadmin\css\formplugins\bootstrap-datepicker\bootstrap-datepicker.css.map" />
+    <None Include="wwwroot\smartadmin\css\formplugins\bootstrap-daterangepicker\bootstrap-daterangepicker.css.map" />
+    <None Include="wwwroot\smartadmin\css\formplugins\bootstrap-markdown\bootstrap-markdown.css.map" />
+    <None Include="wwwroot\smartadmin\css\formplugins\cropperjs\cropper.css.map" />
+    <None Include="wwwroot\smartadmin\css\formplugins\dropzone\dropzone.css.map" />
+    <None Include="wwwroot\smartadmin\css\formplugins\ion-rangeslider\ion-rangeslider.css.map" />
+    <None Include="wwwroot\smartadmin\css\formplugins\nouislider\nouislider.css.map" />
+    <None Include="wwwroot\smartadmin\css\formplugins\select2\select2.bundle.css.map" />
+    <None Include="wwwroot\smartadmin\css\formplugins\smartwizard\smartwizard.css.map" />
+    <None Include="wwwroot\smartadmin\css\formplugins\summernote\summernote.css.map" />
+    <None Include="wwwroot\smartadmin\css\json-path-picker\json-path-picker.css.map" />
+    <None Include="wwwroot\smartadmin\css\miscellaneous\filemanager\filemanager.css.map" />
+    <None Include="wwwroot\smartadmin\css\miscellaneous\fullcalendar\fullcalendar.bundle.css.map" />
+    <None Include="wwwroot\smartadmin\css\miscellaneous\jqvmap\jqvmap.bundle.css.map" />
+    <None Include="wwwroot\smartadmin\css\miscellaneous\lightgallery\lightgallery.bundle.css.map" />
+    <None Include="wwwroot\smartadmin\css\miscellaneous\nestable\nestable.css.map" />
+    <None Include="wwwroot\smartadmin\css\miscellaneous\reactions\reactions.css.map" />
+    <None Include="wwwroot\smartadmin\css\miscellaneous\treeview\treeview.css.map" />
+    <None Include="wwwroot\smartadmin\css\notifications\sweetalert2\sweetalert2.bundle.css.map" />
+    <None Include="wwwroot\smartadmin\css\notifications\toastr\toastr.css.map" />
+    <None Include="wwwroot\smartadmin\css\page-invoice.css.map" />
+    <None Include="wwwroot\smartadmin\css\page-login-alt.css.map" />
+    <None Include="wwwroot\smartadmin\css\skins\skin-master.css.map" />
+    <None Include="wwwroot\smartadmin\css\statistics\apexcharts\apexcharts.css.map" />
+    <None Include="wwwroot\smartadmin\css\statistics\c3\c3.css.map" />
+    <None Include="wwwroot\smartadmin\css\statistics\chartist\chartist.css.map" />
+    <None Include="wwwroot\smartadmin\css\statistics\chartjs\chartjs.css.map" />
+    <None Include="wwwroot\smartadmin\css\statistics\dygraph\dygraph.css.map" />
+    <None Include="wwwroot\smartadmin\css\theme-demo.css.map" />
+    <None Include="wwwroot\smartadmin\css\themes\cust-theme-1.css.map" />
+    <None Include="wwwroot\smartadmin\css\themes\cust-theme-10.css.map" />
+    <None Include="wwwroot\smartadmin\css\themes\cust-theme-11.css.map" />
+    <None Include="wwwroot\smartadmin\css\themes\cust-theme-12.css.map" />
+    <None Include="wwwroot\smartadmin\css\themes\cust-theme-13.css.map" />
+    <None Include="wwwroot\smartadmin\css\themes\cust-theme-14.css.map" />
+    <None Include="wwwroot\smartadmin\css\themes\cust-theme-15.css.map" />
+    <None Include="wwwroot\smartadmin\css\themes\cust-theme-2.css.map" />
+    <None Include="wwwroot\smartadmin\css\themes\cust-theme-3.css.map" />
+    <None Include="wwwroot\smartadmin\css\themes\cust-theme-4.css.map" />
+    <None Include="wwwroot\smartadmin\css\themes\cust-theme-5.css.map" />
+    <None Include="wwwroot\smartadmin\css\themes\cust-theme-6.css.map" />
+    <None Include="wwwroot\smartadmin\css\themes\cust-theme-7.css.map" />
+    <None Include="wwwroot\smartadmin\css\themes\cust-theme-8.css.map" />
+    <None Include="wwwroot\smartadmin\css\themes\cust-theme-9.css.map" />
+    <None Include="wwwroot\smartadmin\css\vendors.bundle.css.map" />
+    <None Include="wwwroot\smartadmin\img\favicon\safari-pinned-tab.svg" />
+    <None Include="wwwroot\smartadmin\img\favicon\site.webmanifest" />
+    <None Include="wwwroot\smartadmin\img\logo-flat.svg" />
+    <None Include="wwwroot\smartadmin\img\logo-gradient.svg" />
+    <None Include="wwwroot\smartadmin\img\logo.svg" />
+    <None Include="wwwroot\smartadmin\img\svg\pattern-1.svg" />
+    <None Include="wwwroot\smartadmin\img\svg\pattern-2.svg" />
+    <None Include="wwwroot\smartadmin\img\svg\pattern-3.svg" />
+    <None Include="wwwroot\smartadmin\img\svg\pattern-4.svg" />
+    <None Include="wwwroot\smartadmin\js\app.bundle.js" />
+    <None Include="wwwroot\smartadmin\js\datagrid\datatables\datatables.bundle.js" />
+    <None Include="wwwroot\smartadmin\js\datagrid\datatables\datatables.export.js" />
+    <None Include="wwwroot\smartadmin\js\dependency\moment\moment.js" />
+    <None Include="wwwroot\smartadmin\js\formplugins\bootstrap-colorpicker\bootstrap-colorpicker.js" />
+    <None Include="wwwroot\smartadmin\js\formplugins\bootstrap-datepicker\bootstrap-datepicker.js" />
+    <None Include="wwwroot\smartadmin\js\formplugins\bootstrap-daterangepicker\bootstrap-daterangepicker.js" />
+    <None Include="wwwroot\smartadmin\js\formplugins\bootstrap-markdown\bootstrap-markdown.js" />
+    <None Include="wwwroot\smartadmin\js\formplugins\cropperjs\cropper.js" />
+    <None Include="wwwroot\smartadmin\js\formplugins\dropzone\dropzone.js" />
+    <None Include="wwwroot\smartadmin\js\formplugins\inputmask\inputmask.bundle.js" />
+    <None Include="wwwroot\smartadmin\js\formplugins\ion-rangeslider\ion-rangeslider.js" />
+    <None Include="wwwroot\smartadmin\js\formplugins\nouislider\nouislider.js" />
+    <None Include="wwwroot\smartadmin\js\formplugins\select2\select2.bundle.js" />
+    <None Include="wwwroot\smartadmin\js\formplugins\smartwizard\smartwizard.js" />
+    <None Include="wwwroot\smartadmin\js\formplugins\summernote\summernote.js" />
+    <None Include="wwwroot\smartadmin\js\i18n\i18n.js" />
+    <None Include="wwwroot\smartadmin\js\json-path-picker\json-path-picker.js" />
+    <None Include="wwwroot\smartadmin\js\miscellaneous\filemanager\filemanager.js" />
+    <None Include="wwwroot\smartadmin\js\miscellaneous\fullcalendar\fullcalendar.bundle.js" />
+    <None Include="wwwroot\smartadmin\js\miscellaneous\jqvmap\jqvmap.bundle.js" />
+    <None Include="wwwroot\smartadmin\js\miscellaneous\jqvmap\maps\jquery.vmap.algeria.js" />
+    <None Include="wwwroot\smartadmin\js\miscellaneous\jqvmap\maps\jquery.vmap.argentina.js" />
+    <None Include="wwwroot\smartadmin\js\miscellaneous\jqvmap\maps\jquery.vmap.brazil.js" />
+    <None Include="wwwroot\smartadmin\js\miscellaneous\jqvmap\maps\jquery.vmap.canada.js" />
+    <None Include="wwwroot\smartadmin\js\miscellaneous\jqvmap\maps\jquery.vmap.europe.js" />
+    <None Include="wwwroot\smartadmin\js\miscellaneous\jqvmap\maps\jquery.vmap.france.js" />
+    <None Include="wwwroot\smartadmin\js\miscellaneous\jqvmap\maps\jquery.vmap.germany.js" />
+    <None Include="wwwroot\smartadmin\js\miscellaneous\jqvmap\maps\jquery.vmap.greece.js" />
+    <None Include="wwwroot\smartadmin\js\miscellaneous\jqvmap\maps\jquery.vmap.iran.js" />
+    <None Include="wwwroot\smartadmin\js\miscellaneous\jqvmap\maps\jquery.vmap.iraq.js" />
+    <None Include="wwwroot\smartadmin\js\miscellaneous\jqvmap\maps\jquery.vmap.russia.js" />
+    <None Include="wwwroot\smartadmin\js\miscellaneous\jqvmap\maps\jquery.vmap.tunisia.js" />
+    <None Include="wwwroot\smartadmin\js\miscellaneous\jqvmap\maps\jquery.vmap.turkey.js" />
+    <None Include="wwwroot\smartadmin\js\miscellaneous\jqvmap\maps\jquery.vmap.usa.js" />
+    <None Include="wwwroot\smartadmin\js\miscellaneous\lightgallery\lightgallery.bundle.js" />
+    <None Include="wwwroot\smartadmin\js\miscellaneous\lightgallery\smartvoice.bundle.js" />
+    <None Include="wwwroot\smartadmin\js\miscellaneous\nestable\nestable.js" />
+    <None Include="wwwroot\smartadmin\js\miscellaneous\treeview\treeview.js" />
+    <None Include="wwwroot\smartadmin\js\notifications\sweetalert2\sweetalert2.bundle.js" />
+    <None Include="wwwroot\smartadmin\js\notifications\toastr\toastr.js" />
+    <None Include="wwwroot\smartadmin\js\statistics\apexcharts\apexcharts.bundle.js" />
+    <None Include="wwwroot\smartadmin\js\statistics\c3\c3.js" />
+    <None Include="wwwroot\smartadmin\js\statistics\chartist\chartist.js" />
+    <None Include="wwwroot\smartadmin\js\statistics\chartjs\chartjs.bundle.js" />
+    <None Include="wwwroot\smartadmin\js\statistics\d3\d3.js" />
+    <None Include="wwwroot\smartadmin\js\statistics\demo-data\apexcharts-irregular-data-series.js" />
+    <None Include="wwwroot\smartadmin\js\statistics\demo-data\demo-c3.js" />
+    <None Include="wwwroot\smartadmin\js\statistics\demo-data\demo-data-dygraph.js" />
+    <None Include="wwwroot\smartadmin\js\statistics\dygraph\dygraph.js" />
+    <None Include="wwwroot\smartadmin\js\statistics\easypiechart\easypiechart.bundle.js" />
+    <None Include="wwwroot\smartadmin\js\statistics\flot\flot.bundle.js" />
+    <None Include="wwwroot\smartadmin\js\statistics\peity\peity.bundle.js" />
+    <None Include="wwwroot\smartadmin\js\statistics\sparkline\sparkline.bundle.js" />
+    <None Include="wwwroot\smartadmin\js\vendors.bundle.js" />
+    <None Include="wwwroot\smartadmin\media\sound\bigbox.ogg" />
+    <None Include="wwwroot\smartadmin\media\sound\messagebox.ogg" />
+    <None Include="wwwroot\smartadmin\media\sound\smallbox.ogg" />
+    <None Include="wwwroot\smartadmin\media\sound\voice_alert.ogg" />
+    <None Include="wwwroot\smartadmin\media\sound\voice_off.ogg" />
+    <None Include="wwwroot\smartadmin\media\sound\voice_on.ogg" />
+    <None Include="wwwroot\smartadmin\webfonts\fa-brands-400.svg" />
+    <None Include="wwwroot\smartadmin\webfonts\fa-brands-400.woff2" />
+    <None Include="wwwroot\smartadmin\webfonts\fa-duotone-900.svg" />
+    <None Include="wwwroot\smartadmin\webfonts\fa-duotone-900.woff2" />
+    <None Include="wwwroot\smartadmin\webfonts\fa-light-300.svg" />
+    <None Include="wwwroot\smartadmin\webfonts\fa-light-300.woff2" />
+    <None Include="wwwroot\smartadmin\webfonts\fa-regular-400.svg" />
+    <None Include="wwwroot\smartadmin\webfonts\fa-regular-400.woff2" />
+    <None Include="wwwroot\smartadmin\webfonts\fa-solid-900.svg" />
+    <None Include="wwwroot\smartadmin\webfonts\fa-solid-900.woff2" />
+    <None Include="wwwroot\smartadmin\webfonts\nextgen-icons.svg" />
+    <None Include="wwwroot\smartadmin\webfonts\nextgen-icons.woff2" />
+    <None Include="wwwroot\smartadmin\webfonts\summernote.woff2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.4">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.5" />
+    <PackageReference Include="System.Drawing.Common" Version="5.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Views\Shared\_AuthenticationLayout.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Views\Shared\_AuthenticationLayout.cshtml" />
+  </ItemGroup>
+
+</Project>

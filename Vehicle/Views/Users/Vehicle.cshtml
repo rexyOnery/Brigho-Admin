@@ -1,0 +1,146 @@
+﻿
+@{
+    ViewData["Title"] = "Vehicle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<style>
+    .hidden{
+        display:none;
+    }
+</style>
+
+<div class="app-main__inner">
+    <div class="app-page-title">
+        <div class="page-title-wrapper">
+            <div class="page-title-heading">
+                <div class="page-title-icon">
+                    <i class="pe-7s-car icon-gradient bg-mean-fruit">
+                    </i>
+                </div>
+                <div>
+                    New Vehicle
+                    <div class="page-title-subheading">
+                        New Vehicle details
+                    </div>
+                </div>
+            </div>
+            <div class="page-title-actions">
+                @*<button type="button" data-toggle="tooltip" title="Example Tooltip" data-placement="bottom" class="btn-shadow mr-3 btn btn-dark">
+                        <i class="fa fa-star"></i>
+                    </button>*@
+                <div class="d-inline-block dropdown">
+                    <button type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn-shadow dropdown-toggle btn btn-info">
+                        <span class="btn-icon-wrapper pr-2 opacity-7">
+                            <i class="fa fa-business-time fa-w-20"></i>
+                        </span>
+                        Actions
+                    </button>
+                    <div tabindex="-1" role="menu" aria-hidden="true" class="dropdown-menu dropdown-menu-right">
+                        <ul class="nav flex-column">
+                            <li class="nav-item">
+                                <a href="/users" class="nav-link">
+                                    <i class="nav-link-icon lnr-file-empty"></i>
+                                    <span>
+                                        New User
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/users/existing" class="nav-link">
+                                    <i class="nav-link-icon lnr-book"></i>
+                                    <span>
+                                        Existing Subscribers
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/users/active" class="nav-link">
+                                    <i class="nav-link-icon lnr-picture"></i>
+                                    <span>
+                                        Active Subscribers
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/users/expired" class="nav-link">
+                                    <i class="nav-link-icon lnr-picture"></i>
+                                    <span>
+                                        Expired Subscribers
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a disabled href="/users/search" class="nav-link">
+                                    <i class="nav-link-icon lnr-file-empty"></i>
+                                    <span>
+                                        Search Tag
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12 hidden" id="error">
+        <div class="alert alert-warning fade show" role="alert">
+            <h5>Error!</h5>
+            <p class="mb-0" id="msg"></p>
+        </div>
+    </div>
+    <div class="main-card mb-3 card">
+        <div class="card-body">
+            <h5 class="card-title">ADD VEHICLE</h5>
+            <form class="">
+                <div class="form-row">
+                    <div class="col-md-6">
+                        <div class="position-relative form-group">
+                            <label for="itemType" class="">Item Type</label>
+                            <select name="select" id="itemType" class="form-control">
+                                <option value="">Select Vehicle Type</option>
+                                <option value="bike">Bike</option>
+                                <option value="tricycle">Tricycle</option>
+                                <option value="car">Car</option>
+                                <option value="jeep">Jeep</option>
+                                <option value="truck">Truck</option>
+                                <option value="bus">Bus</option>
+                                <option value="trailer">Trailer</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="position-relative form-group">
+                            <label for="plate-number" class="">Plate Number</label><input name="platenumber" id="plate-number" placeholder="enter plate number" type="text"
+                                                                                          class="form-control">
+                        </div>
+                    </div>
+                </div>
+                <div class="position-relative form-group">
+                    <label for="chasis-number" class="">Chasis Number</label>
+                    <input name="chasisnumber" id="chasis-number" placeholder="enter chasis number" type="text" class="form-control">
+                </div>
+
+                <div class="position-relative row form-group">
+                    <label for="exampleFile" class="col-sm-2 col-form-label">Vehicle Photo</label>
+                    <div class="col-sm-10">
+                        <input name="file" id="exampleFile" type="file" class="form-control-file">
+                        <small class="form-text text-muted">This is photo of the vehicle to be registered.</small>
+                    </div>
+                </div>
+                <a href="javascript:AddVehicle();" id="btnAddVehicle" class="mt-2 btn btn-primary pull-right">Save</a>
+                <button type="button" id="processor" class="btn-open-options btn btn-warning pull-right hidden">
+                    <i class="fa fa-cog fa-w-16 fa-spin fa-2x"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+
+
+</div>
+
+<script type="text/javascript">
+    $("#customer-ul").addClass('mm-show');
+    $("#li-customer").addClass('mm-active');
+</script>

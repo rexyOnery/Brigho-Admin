@@ -1,0 +1,249 @@
+﻿@{
+    ViewData["Title"] = "Register";
+    Layout = null;//"~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-nav-layout="vertical" data-vertical-style="overlay" data-theme-mode="light" data-header-styles="light" data-menu-styles="light" data-toggled="close">
+
+<head>
+
+    <!-- Meta Data -->
+    <meta charset="UTF-8">
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title> Velvet - Bootstrap 5 Premium Admin & Dashboard Template </title>
+    <meta name="Description" content="Bootstrap Responsive Admin Web Dashboard HTML5 Template">
+    <meta name="Author" content="Spruko Technologies Private Limited">
+    <meta name="keywords" content="simple admin panel template html css,admin panel html,bootstrap 5 admin template,admin,bootstrap dashboard,bootstrap 5 admin panel template,html and css,admin panel,admin panel html template,simple html template,bootstrap admin template,admin dashboard,admin dashboard template,admin panel template,template dashboard">
+
+    <!-- Favicon -->
+    <link rel="icon" href="../assets/images/brand-logos/fav.ico" type="image/x-icon">
+
+    <!-- Main Theme Js -->
+    <script src="../assets/js/authentication-main.js"></script>
+
+    <!-- Bootstrap Css -->
+    <link id="style" href="../assets/libs/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Style Css -->
+    <link href="../assets/css/styles.min.css" rel="stylesheet">
+
+    <!-- Icons Css -->
+    <link href="../assets/css/icons.min.css" rel="stylesheet">
+
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+</head>
+
+<body>
+
+
+    <div class="page error-bg" id="particles-js">
+        <!-- Start::error-page -->
+        <div class="error-page  ">
+            <div class="container">
+                <!-- Start::row-1 -->
+                <div class="row justify-content-center ">
+                    <div class="col-xl-8 col-md-12 col-sm-10 ">
+                        <div class="card custom-card  rectangle2">
+                            <div class="card-body p-0 ">
+                                <div class="row">
+                                    <div class="col-xl-6 col-md-6 pe-sm-0 d-flex">
+                                        <div class="p-5">
+                                            <p class="h4 fw-semibold mb-2">Sign Up</p>
+                                            <p class="mb-3 text-muted op-7 fw-normal">Welcome & Join us by creating a free account !</p>
+                                            <div class="row gy-3 mt-3" id="step_1">
+                                                <div class="col-xl-12 mt-0">
+                                                    <label for="firstname" class="form-label text-default">First Name</label>
+                                                    <input type="text" class="form-control form-control-lg" id="firstname" placeholder="first name">
+                                                </div>
+                                                <div class="col-xl-12 mt-0">
+                                                    <label for="lastname" class="form-label text-default">Last Name</label>
+                                                    <input type="text" class="form-control form-control-lg" id="lastname" placeholder="last name">
+                                                </div>
+                                                <div class="col-xl-12 d-grid mt-2">
+                                                    <button class="btn btn-lg btn-primary mt-4" id="btnContinue" onclick="showNext(2);">Continue</button>
+                                                </div>
+                                            </div>
+                                            <div class="row gy-3 mt-3 hidden" id="step_2">
+                                                <div class="col-xl-12 mt-0">
+                                                    <label for="login_name" class="form-label text-default">Login Name</label>
+                                                    <input type="text" class="form-control form-control-lg" id="login_name" placeholder="login name">
+                                                </div>
+                                                <div class="col-xl-12 mt-0">
+                                                    <label for="password" class="form-label text-default">Password</label>
+                                                    <input type="password" class="form-control form-control-lg" id="password" placeholder="user password">
+                                                </div>
+                                               
+                                                <div class="col-xl-12 d-grid mt-2">
+                                                    <button class="btn btn-lg btn-primary mt-4" id="btnContinue" onclick="showNext(3);">Continue</button>
+                                                </div>
+                                            </div>
+                                            <div class="row gy-3 mt-3 hidden" id="step_3">
+                                                <div class="col-xl-12">
+                                                    <label for="usertype" class="form-control form-control-lg">Admin Type</label>
+                                                    <select name="usertype" id="usertype" class="form-control">
+                                                        <option value="super">Super Admin</option>
+                                                        <option value="admin">Admin</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-xl-12">
+                                                    <label for="email" class="form-label text-default">Email</label>
+                                                    <input type="email" class="form-control form-control-lg" id="email" placeholder="email">
+                                                </div>
+                                                     
+                                                
+                                                <div class="col-xl-12 d-grid mt-2">
+                                                    <button class="btn btn-lg btn-primary mt-4" id="btnRegisterUser" type="button" onclick="addagents()">Create Account</button>
+                                                </div>
+                                            </div>
+                                            <div class="text-center">
+                                                <p class="fs-12 text-muted mt-3">Already have an account? <a href="/aacount" class="text-primary">Sign In</a></p>
+                                            </div>
+                                            <div class="text-center">
+                                                <p class="fs-12 text-muted mt-3 mb-0">
+                                                    <div class="text-success" id="msg"></div> <br /> 
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-6 col-md-6 ps-0 text-fixed-white rounded-0 d-none d-md-block  ">
+                                        <div class="card custom-card mb-0 cover-background overflow-hidden rounded-end rounded-0">
+                                            <div class="card-img-overlay d-flex  align-items-center p-0 rounded-0">
+                                                <div class="card-body p-5 rectangle3">
+                                                    <div>
+                                                        <a href="/account"> <img src="~/x_assets/images/logo.png" alt="logo" class="desktop-dark"></a>
+                                                    </div>
+                                                    <h6 class="mt-4 fs-15 op-9  text-fixed-white">Sign Up</h6>
+                                                    <div class="d-flex mt-3  text-fixed-white">
+                                                        <p class="mb-0 fw-normal fs-14 op-7">
+                                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa eligendi expedita aliquam quaerat nulla voluptas facilis.
+                                                            Porro rem voluptates possimus, ad, autem quae culpa architecto, quam labore blanditiis at ratione.
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--End::row-1 -->
+        </div>
+    </div>
+    <!-- End::error-page -->
+
+    <script type="text/javascript" src="/assets/scripts/main.js"></script>
+    <script type="text/javascript" src="~/js/site.js"></script>
+    <script src="~/jquery-3.6.0.min.js"></script>
+
+    <!-- Custom-Switcher JS -->
+    <script src="../assets/js/custom-switcher.min.js"></script>
+
+    <!-- Bootstrap JS -->
+    <script src="../assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
+
+<style>
+    .hidden {
+        display: none;
+    }
+</style>
+@*
+<div class="app-main__inner">
+    <div class="app-page-title">
+        <div class="page-title-wrapper">
+            <div class="page-title-heading">
+                <div class="page-title-icon">
+                    <i class="pe-7s-add-user icon-gradient bg-mean-fruit">
+                    </i>
+                </div>
+                <div>
+                    New Admin
+                    <div class="page-title-subheading">
+                        Fill the form below to register a new Admin.
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="col-md-12 hidden" id="error">
+        <div class="alert alert-warning fade show" role="alert">
+            <h5>Error!</h5>
+            <p class="mb-0" id="msg"></p>
+        </div>
+    </div>
+    <div class="col-md-12 hidden" id="success">
+        <div class="alert alert-success fade show" role="alert">
+            <h5>Success!</h5>
+            <p class="mb-0" id="msgs"></p>
+        </div>
+    </div>
+    <div class="main-card mb-3 card">
+
+        <div class="card-body">
+            <h5 class="card-title">ADD ADMIN</h5>
+            <div class="">
+                <div class="form-row">
+                    <div class="col-md-6">
+                        <div class="position-relative form-group"><label for="firstname" class="">First Name</label><input name="firstname" id="firstname" placeholder="enter first name" type="text" class="form-control"></div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="position-relative form-group"><label for="lastname" class="">Last Name</label><input name="lastname" id="lastname" placeholder="enter last name" type="text" class="form-control"></div>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="col-md-4">
+                        <div class="position-relative form-group"><label for="login_name" class="">Login Name</label><input name="login_name" id="login_name" placeholder="enter login name" type="text" class="form-control"></div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="position-relative form-group"><label for="password" class="">Password</label><input name="password" id="password" placeholder="enter password" type="password" class="form-control"></div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="position-relative form-group"><label for="repassword" class="">Very Password</label><input name="repassword" id="repassword" placeholder="confirm password" type="password" class="form-control"></div>
+                    </div>
+                </div>
+
+                <div class="form-row">
+
+                    <div class="col-md-6">
+                        <div class="position-relative form-group">
+                            <label for="phone" class="">Email</label>
+                            <input name="email" id="email" placeholder="enter email address" type="text" class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="position-relative form-group">
+                            <label for="usertype" class="">Admin Type</label>
+                            <select name="usertype" id="usertype" class="form-control">
+                                <option value="super">Super Admin</option>
+                                <option value="admin">Admin</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="/account" class="mt-2 btn btn-primary pull-left">Login</a>
+
+                <a id="btnRegisterUser" href="javascript:addagents();" class="mt-2 btn btn-primary pull-right">Register Admin</a>
+
+                <span id="error" class="text-danger pull-right"></span>
+                <button type="button" id="processor" class="btn-open-options btn btn-warning pull-right hidden">
+                    <i class="fa fa-cog fa-w-16 fa-spin fa-2x"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+*@

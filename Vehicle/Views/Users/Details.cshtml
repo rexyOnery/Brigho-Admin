@@ -1,0 +1,150 @@
+﻿
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<script src="https://js.paystack.co/v2/inline.js"></script>
+
+
+<style>
+    .hidden {
+        display: none;
+    }
+</style>
+<div class="app-main__inner">
+    <div class="app-page-title">
+        <div class="page-title-wrapper">
+            <div class="page-title-heading">
+                <div class="page-title-icon">
+                    <i class="pe-7s-car icon-gradient bg-happy-itmeo">
+                    </i>
+                </div>
+                <div>
+                    Personal Details
+                    <div class="page-title-subheading">
+                        Client's personal and item details
+                    </div>
+                </div>
+            </div>
+            <div class="page-title-actions">
+                @*<button type="button" data-toggle="tooltip" title="Example Tooltip" data-placement="bottom" class="btn-shadow mr-3 btn btn-dark">
+                        <i class="fa fa-star"></i>
+                    </button>*@
+                <div class="d-inline-block dropdown">
+                    <button type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn-shadow dropdown-toggle btn btn-info">
+                        <span class="btn-icon-wrapper pr-2 opacity-7">
+                            <i class="fa fa-business-time fa-w-20"></i>
+                        </span>
+                        Actions
+                    </button>
+                    <div tabindex="-1" role="menu" aria-hidden="true" class="dropdown-menu dropdown-menu-right">
+                        <ul class="nav flex-column">
+                            <li class="nav-item">
+                                <a href="/users" class="nav-link">
+                                    <i class="nav-link-icon lnr-file-empty"></i>
+                                    <span>
+                                        New User
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/users/existing" class="nav-link">
+                                    <i class="nav-link-icon lnr-book"></i>
+                                    <span>
+                                        Existing Subscribers
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/users/active" class="nav-link">
+                                    <i class="nav-link-icon lnr-picture"></i>
+                                    <span>
+                                        Active Subscribers
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/users/expired" class="nav-link">
+                                    <i class="nav-link-icon lnr-picture"></i>
+                                    <span>
+                                        Expired Subscribers
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a disabled href="/users/search" class="nav-link">
+                                    <i class="nav-link-icon lnr-file-empty"></i>
+                                    <span>
+                                        Search Tag
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="mb-3 progress hidden" id="processor">
+            <div class="progress-bar progress-bar-animated bg-danger progress-bar-striped" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"></div>
+        </div>
+        <div class="col-lg-6">
+            <div class="main-card mb-3 card">
+                <div class="card-body">
+                    <h5 class="card-title"><label id="firstname"></label> <label id="lastname"></label></h5>
+                    <table class="mb-0 table table-borderless">
+                        <tbody>
+                            <tr>
+                                <td><img class="rounded-circle" id="my_img" height="150" width="150" /></td>
+                                <td>
+                                    <table>
+                                        <tr>
+                                            <td><label id="state"></label></td>
+                                        </tr>
+                                        <tr>
+                                            <td><label id="city"></label></td>
+                                        </tr>
+                                        <tr>
+                                            <td><label id="phone"></label></td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="main-card mb-3 card">
+                <div class="card-body">
+                    <h5 class="card-title">Tagged Vehicles</h5>
+                    <h5 class="card-title pull-right"><a href="javascript: addMoreVehicle();">Add More</a></h5>
+                    <table class="mb-0 table table-dark">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Tag Number</th>
+                                <th>Item Type</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="ubody">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<input type="hidden" id="userdetails" />
+<script type="text/javascript">
+    document.getElementById("customer-ul").className = 'mm-show';
+
+    function addMoreVehicle() {
+        var _query = location.search.split('=');
+        location.href = "/users/vehicle?id=" + _query[1];
+    }
+</script>
