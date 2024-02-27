@@ -29,6 +29,13 @@ namespace Vehicle.Controllers
         {
             return Server.GetCurrentDasboad<Ahhttransaction>();
         }
+
+        public List<Ahhttransaction> GetInProgrssTransaction()
+        {
+            return Server.GetInProgressCurrentDasboad<Ahhttransaction>();
+        }
+
+        
         public void Process(int Id, string processby)
         {
              Server.Process<Ahhttransaction>(Id, processby);
@@ -48,7 +55,12 @@ namespace Vehicle.Controllers
             return Server.GetTotalCash<Ahhttransaction>();
         }
 
-        
+        public string GetTotalTransactions()
+        {
+            return Server.GetTotalTransactions<Ahhttransaction>();
+        }
+
+
 
         public IActionResult privacy()
         {

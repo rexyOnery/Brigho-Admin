@@ -4,7 +4,7 @@
 @{
     Layout = "~/Views/Shared/_SmartAdminLayout.cshtml";
 }
- 
+
 <!-- BEGIN Page Content -->
 <!-- the #js-page-content id is needed for some plugins to initialize -->
 <main id="js-page-content" role="main" class="page-content">
@@ -19,24 +19,24 @@
             <i class='subheader-icon fal fa-chart-area'></i> Marketing <span class='fw-300'>Dashboard</span>
         </h1>
         <div class="subheader-block d-lg-flex align-items-center">
-            <div class="d-flex mr-4">
-                <div class="mr-2">
-                    <span class="peity-donut" data-peity="{ &quot;fill&quot;: [&quot;#967bbd&quot;, &quot;#ccbfdf&quot;],  &quot;innerRadius&quot;: 14, &quot;radius&quot;: 20 }">7/10</span>
-                </div>
-                <div>
-                    <label class="fs-sm mb-0 mt-2 mt-md-0">New Sessions</label>
-                    <h4 class="font-weight-bold mb-0">70.60%</h4>
-                </div>
+            @*  <div class="d-flex mr-4">
+            <div class="mr-2">
+            <span class="peity-donut" data-peity="{ &quot;fill&quot;: [&quot;#967bbd&quot;, &quot;#ccbfdf&quot;],  &quot;innerRadius&quot;: 14, &quot;radius&quot;: 20 }">7/10</span>
+            </div>
+            <div>
+            <label class="fs-sm mb-0 mt-2 mt-md-0">New Sessions</label>
+            <h4 class="font-weight-bold mb-0">70.60%</h4>
+            </div>
             </div>
             <div class="d-flex mr-0">
-                <div class="mr-2">
-                    <span class="peity-donut" data-peity="{ &quot;fill&quot;: [&quot;#2196F3&quot;, &quot;#9acffa&quot;],  &quot;innerRadius&quot;: 14, &quot;radius&quot;: 20 }">3/10</span>
-                </div>
-                <div>
-                    <label class="fs-sm mb-0 mt-2 mt-md-0">Page Views</label>
-                    <h4 class="font-weight-bold mb-0">14,134</h4>
-                </div>
+            <div class="mr-2">
+            <span class="peity-donut" data-peity="{ &quot;fill&quot;: [&quot;#2196F3&quot;, &quot;#9acffa&quot;],  &quot;innerRadius&quot;: 14, &quot;radius&quot;: 20 }">3/10</span>
             </div>
+            <div>
+            <label class="fs-sm mb-0 mt-2 mt-md-0">Page Views</label>
+            <h4 class="font-weight-bold mb-0">14,134</h4>
+            </div>
+            </div> *@
         </div>
     </div>
     <div class="row">
@@ -44,7 +44,7 @@
             <div class="p-3 bg-primary-300 rounded overflow-hidden position-relative text-white mb-g">
                 <div class="">
                     <h3 class="display-4 d-block l-h-n m-0 fw-500">
-                        21.5k
+                        <span id="_logins_"></span>
                         <small class="m-0 l-h-n">users signed up</small>
                     </h3>
                 </div>
@@ -55,8 +55,8 @@
             <div class="p-3 bg-warning-400 rounded overflow-hidden position-relative text-white mb-g">
                 <div class="">
                     <h3 class="display-4 d-block l-h-n m-0 fw-500">
-                        $10,203
-                        <small class="m-0 l-h-n">Visual Index Figure</small>
+                        &#8358;<span id="_price_"></span>
+                        <small class="m-0 l-h-n">Total Amount Processed</small>
                     </h3>
                 </div>
                 <i class="fal fa-gem position-absolute pos-right pos-bottom opacity-15  mb-n1 mr-n4" style="font-size: 6rem;"></i>
@@ -66,8 +66,8 @@
             <div class="p-3 bg-success-200 rounded overflow-hidden position-relative text-white mb-g">
                 <div class="">
                     <h3 class="display-4 d-block l-h-n m-0 fw-500">
-                        - 103.72
-                        <small class="m-0 l-h-n">Offset Balance Ratio</small>
+                        &#8358;<span id="_income_"></span>
+                        <small class="m-0 l-h-n">Total Income Generated</small>
                     </h3>
                 </div>
                 <i class="fal fa-lightbulb position-absolute pos-right pos-bottom opacity-15 mb-n5 mr-n6" style="font-size: 8rem;"></i>
@@ -77,8 +77,8 @@
             <div class="p-3 bg-info-200 rounded overflow-hidden position-relative text-white mb-g">
                 <div class="">
                     <h3 class="display-4 d-block l-h-n m-0 fw-500">
-                        +40%
-                        <small class="m-0 l-h-n">Product level increase</small>
+                        <span id="total_trans"></span>
+                        <small class="m-0 l-h-n">Total Transactions Processed</small>
                     </h3>
                 </div>
                 <i class="fal fa-globe position-absolute pos-right pos-bottom opacity-15 mb-n1 mr-n4" style="font-size: 6rem;"></i>
@@ -104,7 +104,6 @@
                         <table id="dt-basic-example" class="table table-bordered table-hover table-striped w-100">
                             <thead>
                                 <tr>
-                                    <th>Counter</th>
                                     <th>Transaction.Number</th>
                                     <th>Description</th>
                                     <th>Transaction.Date</th>
@@ -116,60 +115,13 @@
                                     <th>Pay.To</th>
                                     <th>Brigho.Payment.Date</th>
                                     <th>Processed.By</th>
-                                    <th>Admin Controls</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr>
-                                    <td>298728508</td>
-                                    <td>Samuel A. Townsend</td>
-                                    <td>Ap #376-4611 Et St.</td>
-                                    <td>Togo</td>
-                                    <td>Monceau-sur-Sambre</td>
-                                    <td>Dorian Mcintyre</td>
-                                    <td>Gravida Molestie PC</td>
-                                    <td>00439892299</td>
-                                    <td>17.61388</td>
-                                    <td>96.86623</td>
-                                    <td>2019-10-06 21:27:12</td>
-                                    <td>30/05/18</td> 
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td>298728508</td>
-                                    <td>Samuel A. Townsend</td>
-                                    <td>Ap #376-4611 Et St.</td>
-                                    <td>Togo</td>
-                                    <td>Monceau-sur-Sambre</td>
-                                    <td>Dorian Mcintyre</td>
-                                    <td>Gravida Molestie PC</td>
-                                    <td>00439892299</td>
-                                    <td>17.61388</td>
-                                    <td>96.86623</td>
-                                    <td>2019-10-06 21:27:12</td>
-                                    <td>30/05/18</td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td>298728508</td>
-                                    <td>Samuel A. Townsend</td>
-                                    <td>Ap #376-4611 Et St.</td>
-                                    <td>Togo</td>
-                                    <td>Monceau-sur-Sambre</td>
-                                    <td>Dorian Mcintyre</td>
-                                    <td>Gravida Molestie PC</td>
-                                    <td>00439892299</td>
-                                    <td>17.61388</td>
-                                    <td>96.86623</td>
-                                    <td>2019-10-06 21:27:12</td>
-                                    <td>30/05/18</td>
-                                    <td></td>
-                                </tr>
-                                 
+                            <tbody id="tcbody">
                             </tbody>
                             <tfoot>
                                 <tr>
-                                    <th>Counter</th>
                                     <th>Transaction.Number</th>
                                     <th>Description</th>
                                     <th>Transaction.Date</th>
@@ -181,7 +133,7 @@
                                     <th>Pay.To</th>
                                     <th>Brigho.Payment.Date</th>
                                     <th>Processed.By</th>
-                                    <th>Admin Controls</th>
+                                    <th>Action</th>
                                 </tr>
                             </tfoot>
                         </table>
@@ -192,9 +144,9 @@
         </div>
     </div>
 </main>
-
+<!-- END Page Settings -->
 @section Scripts {
-    <!-- END Page Settings -->
+
     <!-- base vendor bundle:
          DOC: if you remove pace.js from core please note on Internet Explorer some CSS animations may execute before a page is fully loaded, resulting 'jump' animations
                     + pace.js (recommended)
@@ -232,106 +184,257 @@
     + datatables.styles.buttons.app.js -->
     <script src="/smartadmin/js/datagrid/datatables/datatables.bundle.js"></script>
     <script>
-    $(document).ready(function () {
-        // initialize datatable
-        var table = $('#dt-basic-example').dataTable(
-            {
-                responsive: true,
-                columnDefs: [
-                    {
-                        targets: -1,
-                        title: 'Admin Controls',
-                        orderable: false,
-                        render: function (data, type, full, meta) {
-
-                            /*
-                            -- ES6
-                            -- convert using https://babeljs.io online transpiler
-                            return `
-                            <div class='d-flex mt-2'>
-                                <a href='javascript:void(0);' class='btn btn-sm btn-outline-danger mr-2' title='Delete Record'>
-                                    <i class="fal fa-times"></i> Delete Record
-                                </a>
-                                <a href='javascript:void(0);' class='btn btn-sm btn-outline-primary mr-2' title='Edit'>
-                                    <i class="fal fa-edit"></i> Edit
-                                </a>
-                                <div class='dropdown d-inline-block'>
-                                    <a href='#'' class='btn btn-sm btn-outline-primary mr-2' data-toggle='dropdown' aria-expanded='true' title='More options'>
-                                        <i class="fal fa-plus"></i>
-                                    </a>
-                                    <div class='dropdown-menu'>
-                                        <a class='dropdown-item' href='javascript:void(0);'>Change Status</a>
-                                        <a class='dropdown-item' href='javascript:void(0);'>Generate Report</a>
-                                    </div>
-                                </div>
-                            </div>`;
-
-                            ES5 example below:
-
-                            */
-                            return "\n\t\t\t\t\t\t<div class='d-flex mt-2'>\n\t\t\t\t\t\t\t<a href='javascript:void(0);' class='btn btn-sm btn-outline-danger mr-2' title='Delete Record'><i class=\"fal fa-times\"></i> Delete Record</a>\n\t\t\t\t\t\t\t<a href='javascript:void(0);' class='btn btn-sm btn-outline-primary mr-2' title='Edit'><i class=\"fal fa-edit\"></i> Edit</a>\n\t\t\t\t\t\t\t<div class='dropdown d-inline-block'>\n\t\t\t\t\t\t\t\t<a href='#'' class='btn btn-sm btn-outline-primary mr-2' data-toggle='dropdown' aria-expanded='true' title='More options'><i class=\"fal fa-plus\"></i></a>\n\t\t\t\t\t\t\t\t<div class='dropdown-menu'>\n\t\t\t\t\t\t\t\t\t<a class='dropdown-item' href='javascript:void(0);'>Change Status</a>\n\t\t\t\t\t\t\t\t\t<a class='dropdown-item' href='javascript:void(0);'>Generate Report</a>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t</div>";
-                        },
+        getTotalCash();
+        getTotalTransaction();
+        getTotalUsers();
+        $(document).ready(function () {
+            // initialize datatable
+            $('#dt-basic-example').DataTable(
+                {
+                    ajax: {
+                        url: "/Home/GetInProgrssTransaction",
+                        type: "GET",
+                        dataSrc: ''
                     },
-                    {
-                        targets: 1,
-                        /*	The `data` parameter refers to the data for the cell (defined by the
-                            `data` option, which defaults to the column being worked with, in this case `data: 16`.*/
-                        render: function (data, type, full, meta) {
-                            var badge = {
-                                1:
-                                {
-                                    'title': 'Pending',
-                                    'class': 'badge-warning'
-                                },
-                                2:
-                                {
-                                    'title': 'Delivered',
-                                    'class': 'badge-success'
-                                },
-                                3:
-                                {
-                                    'title': 'Canceled',
-                                    'class': 'badge-secondary'
-                                },
-                                4:
-                                {
-                                    'title': 'Attempt #1',
-                                    'class': 'bg-danger-100 text-white'
-                                },
-                                5:
-                                {
-                                    'title': 'Attempt #2',
-                                    'class': 'bg-danger-300 text-white'
-                                },
-                                6:
-                                {
-                                    'title': 'Failed',
-                                    'class': 'badge-danger'
-                                },
-                                7:
-                                {
-                                    'title': 'Attention!',
-                                    'class': 'badge-primary'
-                                },
-                                8:
-                                {
-                                    'title': 'In Progress',
-                                    'class': 'badge-success'
-                                },
-                            };
-                            if (typeof badge[data] === 'undefined') {
-                                return data;
+                    responsive: true,
+                    processing: true,
+                    filter: true,
+                    columns: [
+                        {
+                            data: "transactionCode",
+                            render: function (data, type, row) {
+                                
+                                var rows = "";
+
+                                rows += "                <a href='#' class='btn btn-default' data-toggle='modal' data-target='.default-example-modal-left-smt-" + row["id"] + "'>" + row['transactionCode'] + "</a>"
+                                rows += "               <div class='modal fade default-example-modal-left-smt-" + row["id"] + "' tabindex='-1' role='dialog' aria-hidden='true'>"
+                                rows += "                              <div class='modal-dialog modal-dialog-left modal-sm'>"
+                                rows += "                <div class='modal-content'>"
+                                rows += "   <div class='modal-header'>"
+                                rows += "                                               <h5 class='modal-title h4'>Cost Breakdown for: " + row['transactionCode'] + "</h5>"
+                                rows += "                                    <button type='button' class='close' data-dismiss='modal' aria-label='Close'>"
+                                rows += "                                        <span aria-hidden='true'><i class='fal fa-times'></i></span>"
+                                rows += "                                    </button>"
+                                rows += "                               </div>"
+                                rows += "                                    <div class='modal-body'>"
+                                rows += "                                           <table>"
+                                rows += "                                                        <tr><td>seller Mobile Number: " + row['sellerMobileNumber'] + "</td><tr>"
+                                rows += "                                                        <tr><td>buyer Mobile Number: " + row['buyerMobileNumber'] + "</td><tr>"
+                                rows += "                                                        <tr><td>Agreed Price: " + formatMoney(parseFloat(row['agreedPrice'])) + "</td><tr>"
+                                rows += "                                                        <tr><td>Shipping Cost: " + formatMoney(parseFloat(row['shippingCost'])) + "</td><tr>"
+                                rows += "                                                        <tr><td>Commision: " + formatMoney(parseFloat(row['ahhtCommission'])) + "</td><tr>"
+                                rows += "                                                        <tr><td>Total Cost: " + formatMoney(parseFloat(row['totalCost'])) + "</td><tr>"
+                                rows += "                                              </table>"
+                                rows += "                                          </div>"
+                                rows += "                                          <div class='modal-footer'>"
+                                rows += "                                              <button type='button' class='btn btn-secondary' data-dismiss='modal'>Close</button>"
+                                rows += "                                              <button type='button' class='btn btn-primary'>Save changes</button>"
+                                rows += "                                          </div>"
+                                rows += "                                      </div>"
+                                rows += "                                  </div>"
+                                rows += "                              </div>"
+
+                                return rows;
                             }
-                            return '<span class="badge ' + badge[data].class + ' badge-pill">' + badge[data].title + '</span>';
                         },
-                    }],
-            });
+                        {
+                            data: "transactionDescription"
+                        },
+                        { data: "transactionDate", name: "Transaction.Date" },
+                        { data: "paymentDate", name: "Buyer.Payment.Date" },
+                        {
+                            data: "sellerAccountName",
+                            render: function (data, type, row) {
+                                var rows = "";
 
-        /*window.onresize = function() {
-            table.responsive.rebuild();
-            table.responsive.recalc();
-        }*/
+                                rows += "                <a href='#' class='btn btn-default' data-toggle='modal' data-target='.default-example-modal-left-sms-" + row["id"] + "'>View</a>"
+                                rows += "               <div class='modal fade default-example-modal-left-sms-" + row["id"] + "' tabindex='-1' role='dialog' aria-hidden='true'>"
+                                rows += "                              <div class='modal-dialog modal-dialog-left modal-sm'>"
+                                rows += "                <div class='modal-content'>"
+                                rows += "   <div class='modal-header'>"
+                                rows += "                                               <h5 class='modal-title h4'>Account Info for: " + row['sellerAccountName'] + "</h5>"
+                                rows += "                                    <button type='button' class='close' data-dismiss='modal' aria-label='Close'>"
+                                rows += "                                        <span aria-hidden='true'><i class='fal fa-times'></i></span>"
+                                rows += "                                    </button>"
+                                rows += "                               </div>"
+                                rows += "                                    <div class='modal-body'>"
+                                rows += "                                           <table>"
+                                rows += "                                                        <tr><td>Bank Name:" + row['sellerBankName'] + "</td><tr>"
+                                rows += "                                                        <tr><td>Account Name:" + row['sellerAccountName'] + "</td><tr>"
+                                rows += "                                                        <tr><td>Account number:" + row['sellerAccountNumber'] + "</td><tr>"
+                                rows += "                                              </table>"
+                                rows += "                                          </div>"
+                                rows += "                                          <div class='modal-footer'>"
+                                rows += "                                              <button type='button' class='btn btn-secondary' data-dismiss='modal'>Close</button>"
+                                rows += "                                              <button type='button' class='btn btn-primary'>Save changes</button>"
+                                rows += "                                          </div>"
+                                rows += "                                      </div>"
+                                rows += "                                  </div>"
+                                rows += "                              </div>"
 
-    });
+                                return rows;
+                            }
+                        },
+                        {
+                            data: "buyerAccountName",
+                            render: function (data, type, row) {
+                                var rows = "";
+
+
+                                rows += "                <a href='#' class='btn btn-default' data-toggle='modal' data-target='.default-example-modal-left-smb-" + row["id"] + "'>View</a>"
+                                rows += "               <div class='modal fade default-example-modal-left-smb-" + row["id"] + "' tabindex='-1' role='dialog' aria-hidden='true'>"
+                                rows += "                              <div class='modal-dialog modal-dialog-left modal-sm'>"
+                                rows += "                <div class='modal-content'>"
+                                rows += "   <div class='modal-header'>"
+                                rows += "                                               <h5 class='modal-title h4'>Account Info for: " + row['buyerAccountName'] + "</h5>"
+                                rows += "                                    <button type='button' class='close' data-dismiss='modal' aria-label='Close'>"
+                                rows += "                                        <span aria-hidden='true'><i class='fal fa-times'></i></span>"
+                                rows += "                                    </button>"
+                                rows += "                               </div>"
+                                rows += "                                    <div class='modal-body'>"
+                                rows += "                                           <table>"
+                                rows += "                                                        <tr><td>Bank Name:" + row['buyerBankName'] + "</td><tr>"
+                                rows += "                                                        <tr><td>Account Name:" + row['buyerAccountName'] + "</td><tr>"
+                                rows += "                                                        <tr><td>Account number:" + row['buyerAccountNumber'] + "</td><tr>"
+                                rows += "                                              </table>"
+                                rows += "                                          </div>"
+                                rows += "                                          <div class='modal-footer'>"
+                                rows += "                                              <button type='button' class='btn btn-secondary' data-dismiss='modal'>Close</button>"
+                                rows += "                                              <button type='button' class='btn btn-primary'>Save changes</button>"
+                                rows += "                                          </div>"
+                                rows += "                                      </div>"
+                                rows += "                                  </div>"
+                                rows += "                              </div>"
+
+                                return rows;
+                            }
+                        },
+                        { data: "transactionStatus", name: "Temporary.Status" },
+                        {
+                            data: "processed",
+                            render: function (data, type, row) {
+                                var htm = "";
+                                if (row["processed"] == true) {
+
+                                    if (row["reasons"].includes('Buyer declined the transaction')) {
+                                        htm += "<td class='text-center'>Transaction declined</td>"
+                                    } else {
+                                        if (row["reasons"].includes('returned')) {
+                                            htm += "<td class='text-center'>Item returned (Seller & Buyer paid)</td>"
+                                        } else {
+                                            if (row["reasons"].startsWith("Completed")) {
+                                                htm += "<td class='text-center'>Item collected (Seller paid)</td>"
+                                            }
+                                        }
+                                    }
+                                } else {
+                                    htm += "<td class='text-center'> - </td>"
+                                }
+                                return htm;
+                            }
+                        },
+                        {
+                            data: "reasons",
+                            render: function (data, type, row) {
+                                var htm = "";
+                                if (row["reasons"].startsWith("Completed")) {
+
+                                    var cost = row["agreedPrice"];
+                                    var ship = parseInt(row["shippingCost"]);
+
+                                    var total = parseInt(cost) + parseInt(ship);
+                                    var _total = formatMoney(parseFloat(total));
+
+                                    htm += "<td class='text-center'>"
+                                    htm += "     Seller: &#8358;" + _total;
+                                    htm += "</td>"
+                                } else {
+                                    if (row["reasons"].startsWith("Declined") && row["paid"] == true) {
+
+                                        var cost = row["totalCost"];
+                                        var commission = row["ahhtCommission"];
+
+                                        var ship = parseInt((0.5 * row["shippingCost"])) + parseInt(row["shippingCost"]);
+                                        var _ship = formatMoney(parseFloat(ship));
+
+                                        var total = parseInt(cost) - parseInt(commission) - parseInt(ship);
+                                        var _total = formatMoney(parseFloat(total));
+
+                                        htm += "<td class='text-center'>"
+                                        htm += "    Buyer: &#8358;" + _total + " <br/> Seller: " + _ship
+                                        htm += "</td>"
+                                    } else {
+                                        if (row["reasons"].startsWith("Pending") && (row["paid"] == false || row["paid"] == true)) {
+                                            htm += "<td class='text-center'>"
+                                            htm += " - "
+                                            htm += "</td>"
+                                        } else {
+                                            if (row["reasons"].includes("declined") && row["paid"] == false) {
+                                                htm += "<td class='text-center'>"
+                                                htm += " - "
+                                                htm += "</td>"
+                                            }
+                                        }
+                                    }
+                                }
+                                return htm;
+                            }
+                        },
+                        {
+                            data: "refundDate",
+                            render: function (data, type, row) {
+                                 
+                                var htm = ''; 
+                                if (row["refundDate"] == null)
+                                    htm = ": No Payment Initiated";
+                                else
+                                    htm = ": "+row["refundDate"];
+                                return htm;
+                            }
+                        },
+                        {
+                            data: "processedBy",
+                            render: function (data, type, row) {
+
+                                var htm = '';
+                                var procby = row["processedBy"] == null ? "-" : row["processedBy"]
+                                htm += " " + procby + " "
+                                return htm;
+                            }
+                        },
+                        {
+                            data: 'reasons',
+                            render: function (data, type, row) {
+                                var htm = "";
+                                if (row["reasons"].startsWith("Pending") && row["processed"] == false && row["paid"] == false && AddDate(row["transactionDate"], "1", "M") == true) {
+                                    htm += "<td class='text-center'><button onclick='javascript:Delete(" + row["id"] + ");' class='btn-sm btn btn-danger'>delete</button></td>"
+                                }
+                                else {
+                                    if (row["reasons"].startsWith("Pending")) {
+                                        htm += "<td class='text-center'> No Action </td>"
+                                    } else {
+                                        if (row["processed"] == true) {
+                                            if (row["completed"] == false) {
+                                                htm += "<td class='text-center'><button onclick='javascript:Completed(" + row["id"] + ");' class='btn-sm btn btn-success'>complete</button></td>"
+                                            }
+                                        } else {
+                                            htm += "<td class='text-center'><button onclick='javascript:Processed(" + row["id"] + ");' class='btn-sm btn btn-warning'>process</button></td>"
+                                        }
+                                    }
+                                }
+                                return htm;
+                            }
+                        },
+                    ]
+
+                }
+            );
+
+            /*window.onresize = function() {
+                table.responsive.rebuild();
+                table.responsive.recalc();
+            }*/
+
+        });
     </script>
 }

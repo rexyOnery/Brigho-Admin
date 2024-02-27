@@ -380,7 +380,7 @@ if ($("#complete").length > 0) {
                         htm += "<button type='button' tabindex='0' class='dropdown-item'>Commision: " + formatMoney(parseFloat(item.ahhtCommission)) + "</button>"
                         htm += "<h6 tabindex='-1' class='dropdown-header'>Total Cost: " + formatMoney(parseFloat(item.totalCost)) + "</h6>"
                         htm += "</div>"
-                        htm += "</td > "
+                        htm += "</td> "
                         htm += "<td class='text-center'>" + item.transactionDescription + "</td>"
                         htm += "<td class='text-center'>" + item.transactionDate + "</td>"
                         htm += "<td class='text-center'>" + item.paymentDate + "</td>"
@@ -452,6 +452,23 @@ if ($("#complete").length > 0) {
 
     
 }
+                  
+
+var getTotalTransaction = () => {
+
+    $.ajax({
+        type: "GET",
+        url: "/Home/GetTotalTransactions",
+        contentType: "application/json; charset=utf-8",
+
+        dataType: "json",
+        success: function (data) {
+
+            $("#total_trans").html( formatMoney(parseFloat(data)).split('.')[0]);
+            
+        }
+    });
+}
 
 var getTotalCash = () => {
      
@@ -463,11 +480,28 @@ var getTotalCash = () => {
         dataType: "json",
         success: function (data) {
            
-            $("#_price_").html(formatMoney(parseFloat(data)));
+            $("#_price_").html(formatMoney(parseFloat(data)).split('.')[0]);
+            var income = 0.025 * data;
+            console.log("my income "+income);
+            $("#_income_").html(formatMoney(parseFloat(income)).split('.')[0]);
         }
     });
 }
 
+var getTotalUsers = () => {
+
+    $.ajax({
+        type: "GET",
+        url: "/Account/CountLogin",
+        contentType: "application/json; charset=utf-8",
+
+        dataType: "json",
+        success: function (data) {
+
+            $("#_logins_").html(formatMoney(parseFloat(data)).split('.')[0]); 
+        }
+    });
+}
 if ($("#returned").length > 0) {
 
     $("#processor").removeClass("hidden");

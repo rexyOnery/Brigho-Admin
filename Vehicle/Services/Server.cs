@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
+using System.Security.Principal;
 using System.Threading.Tasks;
 using Vehicle.Models;
 
@@ -226,6 +227,19 @@ namespace Vehicle.Services
             }
         }
 
+        internal static List<Ahhttransaction> GetInProgressCurrentDasboad<T>() where T : class
+        {
+            using (var _context = new DB_A5DE44_HoldingContext())
+            {
+                var _trns = _context.Ahhttransactions
+                    .OrderByDescending(c => c.Id)
+                    .Where(item=>(item.Processed == false || item.Processed == true) && item.Completed == false && item.Deleted == false)
+                    .ToList();
+
+                return _trns;
+            }
+        }
+
         internal static string GetTotalCash<T>() where T : class
         {
             using (var _context = new DB_A5DE44_HoldingContext())
@@ -233,6 +247,16 @@ namespace Vehicle.Services
                 var _trns = _context.Ahhttransactions
                     .Sum(c => Convert.ToInt32(c.TotalCost));
 
+                return Convert.ToInt32(_trns * 2000).ToString();
+            }
+        }
+
+        internal static string GetTotalTransactions<T>() where T : class
+        {
+            using (var _context = new DB_A5DE44_HoldingContext())
+            {
+                var _trns = _context.Ahhttransactions.Count();
+                    
                 return Convert.ToInt32(_trns * 2000).ToString();
             }
         }
@@ -417,6 +441,16 @@ namespace Vehicle.Services
                     var s = e.ToString();
                     return false;
                 }
+            }
+        }
+
+        internal static Task<int> CountLogin()
+        {
+            using (var _context = new DB_A5DE44_HoldingContext())
+            {
+                var _userCount = _context.Logins.Count();
+                var cout = Convert.ToInt32(_userCount * 2018);
+                return Task.FromResult(cout);
             }
         }
         // private static Vitsitem TagDTO(Vitsitem user) =>

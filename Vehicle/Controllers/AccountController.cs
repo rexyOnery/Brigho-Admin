@@ -39,7 +39,12 @@ namespace Vehicle.Controllers
         { 
             return await Server.Login<Account>(account);
         }
-         
+
+        public async Task<int> CountLogin()
+        {
+            return await Server.CountLogin();
+        }
+
         public async Task<string> Recover(EmailModel model)
         {
             string emailaddress = model.Email;
