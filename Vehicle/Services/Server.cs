@@ -240,6 +240,58 @@ namespace Vehicle.Services
             }
         }
 
+        internal static List<Ahhttransaction> GetCompletedDashboard<T>() where T : class
+        {
+            using (var _context = new DB_A5DE44_HoldingContext())
+            {
+                var _trns = _context.Ahhttransactions
+                    .OrderByDescending(c => c.Id)
+                    .Where(item => item.Processed == true && item.Completed == true && item.Reasons.Contains("collected"))
+                    .ToList();
+
+                return _trns;
+            }
+        }
+
+        internal static List<Ahhttransaction> GetReturnedDashboard<T>() where T : class
+        {
+            using (var _context = new DB_A5DE44_HoldingContext())
+            {
+                var _trns = _context.Ahhttransactions
+                    .OrderByDescending(c => c.Id)
+                    .Where(item => item.Processed == true && item.Paid == true && item.Reasons.Contains("returned"))
+                    .ToList();
+
+                return _trns;
+            }
+        }
+
+        internal static List<Ahhttransaction> GetCancelledDashboard<T>() where T : class
+        {
+            using (var _context = new DB_A5DE44_HoldingContext())
+            {
+                var _trns = _context.Ahhttransactions
+                    .OrderByDescending(c => c.Id)
+                    .Where(item => item.Processed == true && item.Reasons.Contains("decline"))
+                    .ToList();
+
+                return _trns;
+            }
+        }
+
+        internal static List<Ahhttransaction> GetDeletedDashboard<T>() where T : class
+        {
+            using (var _context = new DB_A5DE44_HoldingContext())
+            {
+                var _trns = _context.Ahhttransactions
+                    .OrderByDescending(c => c.Id)
+                    .Where(item => item.Deleted == true && item.Reasons.Contains("yet"))
+                    .ToList();
+
+                return _trns;
+            }
+        }
+
         internal static string GetTotalCash<T>() where T : class
         {
             using (var _context = new DB_A5DE44_HoldingContext())

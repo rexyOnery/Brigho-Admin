@@ -40,84 +40,32 @@
                         <table id="dt-basic-example" class="table table-bordered table-hover table-striped w-100">
                             <thead>
                                 <tr>
-                                    <th>Counter</th>
                                     <th>Transaction.Number</th>
                                     <th>Description</th>
                                     <th>Transaction.Date</th>
-                                    <th>Buyer.Payment.Date</th>
+                                    <th>Seller.Phone</th>
                                     <th>Seller.Bank</th>
+                                    <th>Buyer.Phone</th>
                                     <th>Buyer.Bank</th>
                                     <th>Temporary.Status</th>
-                                    <th>Final.Status</th>
-                                    <th>Pay.To</th>
-                                    <th>Brigho.Payment.Date</th>
-                                    <th>Processed.By</th>
-                                    <th>Action</th>
+                                    <th>Final.Status</th> 
+                                    <th>Processed.By</th> 
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr>
-                                    <td>298728508</td>
-                                    <td>Samuel A. Townsend</td>
-                                    <td>Ap #376-4611 Et St.</td>
-                                    <td>Togo</td>
-                                    <td>Monceau-sur-Sambre</td>
-                                    <td>Dorian Mcintyre</td>
-                                    <td>Gravida Molestie PC</td>
-                                    <td>00439892299</td>
-                                    <td>17.61388</td>
-                                    <td>96.86623</td>
-                                    <td>2019-10-06 21:27:12</td>
-                                    <td>30/05/18</td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td>298728508</td>
-                                    <td>Samuel A. Townsend</td>
-                                    <td>Ap #376-4611 Et St.</td>
-                                    <td>Togo</td>
-                                    <td>Monceau-sur-Sambre</td>
-                                    <td>Dorian Mcintyre</td>
-                                    <td>Gravida Molestie PC</td>
-                                    <td>00439892299</td>
-                                    <td>17.61388</td>
-                                    <td>96.86623</td>
-                                    <td>2019-10-06 21:27:12</td>
-                                    <td>30/05/18</td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td>298728508</td>
-                                    <td>Samuel A. Townsend</td>
-                                    <td>Ap #376-4611 Et St.</td>
-                                    <td>Togo</td>
-                                    <td>Monceau-sur-Sambre</td>
-                                    <td>Dorian Mcintyre</td>
-                                    <td>Gravida Molestie PC</td>
-                                    <td>00439892299</td>
-                                    <td>17.61388</td>
-                                    <td>96.86623</td>
-                                    <td>2019-10-06 21:27:12</td>
-                                    <td>30/05/18</td>
-                                    <td></td>
-                                </tr>
-
+                            <tbody id="tcbody">
                             </tbody>
                             <tfoot>
                                 <tr>
-                                    <th>Counter</th>
                                     <th>Transaction.Number</th>
                                     <th>Description</th>
                                     <th>Transaction.Date</th>
-                                    <th>Buyer.Payment.Date</th>
+                                    <th>Seller.Phone</th>
                                     <th>Seller.Bank</th>
+                                    <th>Buyer.Phone</th>
                                     <th>Buyer.Bank</th>
                                     <th>Temporary.Status</th>
                                     <th>Final.Status</th>
-                                    <th>Pay.To</th>
-                                    <th>Brigho.Payment.Date</th>
                                     <th>Processed.By</th>
-                                    <th>Action</th>
                                 </tr>
                             </tfoot>
                         </table>
@@ -172,101 +120,129 @@
         $("#main-trans").addClass('active open')
 
         $("#md").removeClass('active')
-        $("#del").addClass('active')
+        $("#dele").addClass('active')
         $(document).ready(function () {
             // initialize datatable
-            var table = $('#dt-basic-example').dataTable(
+            $('#dt-basic-example').DataTable(
                 {
+                    ajax: {
+                        url: "/Home/GetDeletedTransaction",
+                        type: "GET",
+                        dataSrc: ''
+                    },
                     responsive: true,
-                    columnDefs: [
+                    processing: true,
+                    filter: true,
+                    columns: [
                         {
-                            targets: -1,
-                            title: 'Admin Controls',
-                            orderable: false,
-                            render: function (data, type, full, meta) {
-
-                                /*
-                                -- ES6
-                                -- convert using https://babeljs.io online transpiler
-                                return `
-                                <div class='d-flex mt-2'>
-                                    <a href='javascript:void(0);' class='btn btn-sm btn-outline-danger mr-2' title='Delete Record'>
-                                        <i class="fal fa-times"></i> Delete Record
-                                    </a>
-                                    <a href='javascript:void(0);' class='btn btn-sm btn-outline-primary mr-2' title='Edit'>
-                                        <i class="fal fa-edit"></i> Edit
-                                    </a>
-                                    <div class='dropdown d-inline-block'>
-                                        <a href='#'' class='btn btn-sm btn-outline-primary mr-2' data-toggle='dropdown' aria-expanded='true' title='More options'>
-                                            <i class="fal fa-plus"></i>
-                                        </a>
-                                        <div class='dropdown-menu'>
-                                            <a class='dropdown-item' href='javascript:void(0);'>Change Status</a>
-                                            <a class='dropdown-item' href='javascript:void(0);'>Generate Report</a>
-                                        </div>
-                                    </div>
-                                </div>`;
-
-                                ES5 example below:
-
-                                */
-                                return "\n\t\t\t\t\t\t<div class='d-flex mt-2'>\n\t\t\t\t\t\t\t<a href='javascript:void(0);' class='btn btn-sm btn-outline-danger mr-2' title='Delete Record'><i class=\"fal fa-times\"></i> Delete Record</a>\n\t\t\t\t\t\t\t<a href='javascript:void(0);' class='btn btn-sm btn-outline-primary mr-2' title='Edit'><i class=\"fal fa-edit\"></i> Edit</a>\n\t\t\t\t\t\t\t<div class='dropdown d-inline-block'>\n\t\t\t\t\t\t\t\t<a href='#'' class='btn btn-sm btn-outline-primary mr-2' data-toggle='dropdown' aria-expanded='true' title='More options'><i class=\"fal fa-plus\"></i></a>\n\t\t\t\t\t\t\t\t<div class='dropdown-menu'>\n\t\t\t\t\t\t\t\t\t<a class='dropdown-item' href='javascript:void(0);'>Change Status</a>\n\t\t\t\t\t\t\t\t\t<a class='dropdown-item' href='javascript:void(0);'>Generate Report</a>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t</div>";
-                            },
+                            data: "transactionCode",
+                             
                         },
                         {
-                            targets: 1,
-                            /*	The `data` parameter refers to the data for the cell (defined by the
-                                `data` option, which defaults to the column being worked with, in this case `data: 16`.*/
-                            render: function (data, type, full, meta) {
-                                var badge = {
-                                    1:
-                                    {
-                                        'title': 'Pending',
-                                        'class': 'badge-warning'
-                                    },
-                                    2:
-                                    {
-                                        'title': 'Delivered',
-                                        'class': 'badge-success'
-                                    },
-                                    3:
-                                    {
-                                        'title': 'Canceled',
-                                        'class': 'badge-secondary'
-                                    },
-                                    4:
-                                    {
-                                        'title': 'Attempt #1',
-                                        'class': 'bg-danger-100 text-white'
-                                    },
-                                    5:
-                                    {
-                                        'title': 'Attempt #2',
-                                        'class': 'bg-danger-300 text-white'
-                                    },
-                                    6:
-                                    {
-                                        'title': 'Failed',
-                                        'class': 'badge-danger'
-                                    },
-                                    7:
-                                    {
-                                        'title': 'Attention!',
-                                        'class': 'badge-primary'
-                                    },
-                                    8:
-                                    {
-                                        'title': 'In Progress',
-                                        'class': 'badge-success'
-                                    },
-                                };
-                                if (typeof badge[data] === 'undefined') {
-                                    return data;
-                                }
-                                return '<span class="badge ' + badge[data].class + ' badge-pill">' + badge[data].title + '</span>';
-                            },
-                        }],
-                });
+                            data: "transactionDescription"
+                        },
+                        { data: "transactionDate", name: "Transaction.Date" },
+                        { data: "sellerMobileNumber", name: "Seller.Phone" },
+                        {
+                            data: "sellerAccountName",
+                            render: function (data, type, row) {
+                                var rows = "";
+
+                                rows += "                <a href='#' class='' data-toggle='modal' data-target='.default-example-modal-left-sms-" + row["id"] + "'>View</a>"
+                                rows += "               <div class='modal fade default-example-modal-left-sms-" + row["id"] + "' tabindex='-1' role='dialog' aria-hidden='true'>"
+                                rows += "                              <div class='modal-dialog modal-dialog-left modal-sm'>"
+                                rows += "                <div class='modal-content'>"
+                                rows += "   <div class='modal-header'>"
+                                rows += "                                               <h5 class='modal-title h4'>Account Info for: " + row['sellerAccountName'] + "</h5>"
+                                rows += "                                    <button type='button' class='close' data-dismiss='modal' aria-label='Close'>"
+                                rows += "                                        <span aria-hidden='true'><i class='fal fa-times'></i></span>"
+                                rows += "                                    </button>"
+                                rows += "                               </div>"
+                                rows += "                                    <div class='modal-body'>"
+                                rows += "                                           <table>"
+                                rows += "                                                        <tr><td>Bank Name:" + row['sellerBankName'] + "</td><tr>"
+                                rows += "                                                        <tr><td>Account Name:" + row['sellerAccountName'] + "</td><tr>"
+                                rows += "                                                        <tr><td>Account number:" + row['sellerAccountNumber'] + "</td><tr>"
+                                rows += "                                              </table>"
+                                rows += "                                          </div>"
+                                rows += "                                          <div class='modal-footer'>"
+                                rows += "                                              <button type='button' class='btn btn-secondary' data-dismiss='modal'>Close</button>"
+                                rows += "                                              <button type='button' class='btn btn-primary'>Save changes</button>"
+                                rows += "                                          </div>"
+                                rows += "                                      </div>"
+                                rows += "                                  </div>"
+                                rows += "                              </div>"
+
+                                return rows;
+                            }
+                        },
+                        { data: "buyerMobileNumber", name: "Buyer.Phone" },
+                        {
+                            data: "buyerAccountName",
+                            render: function (data, type, row) {
+                                var rows = "";
+
+
+                                rows += "                <a href='#' class='' data-toggle='modal' data-target='.default-example-modal-left-smb-" + row["id"] + "'>View</a>"
+                                rows += "               <div class='modal fade default-example-modal-left-smb-" + row["id"] + "' tabindex='-1' role='dialog' aria-hidden='true'>"
+                                rows += "                              <div class='modal-dialog modal-dialog-left modal-sm'>"
+                                rows += "                <div class='modal-content'>"
+                                rows += "   <div class='modal-header'>"
+                                rows += "                                               <h5 class='modal-title h4'>Account Info for: " + row['buyerAccountName'] + "</h5>"
+                                rows += "                                    <button type='button' class='close' data-dismiss='modal' aria-label='Close'>"
+                                rows += "                                        <span aria-hidden='true'><i class='fal fa-times'></i></span>"
+                                rows += "                                    </button>"
+                                rows += "                               </div>"
+                                rows += "                                    <div class='modal-body'>"
+                                rows += "                                           <table>"
+                                rows += "                                                        <tr><td>Bank Name:" + row['buyerBankName'] + "</td><tr>"
+                                rows += "                                                        <tr><td>Account Name:" + row['buyerAccountName'] + "</td><tr>"
+                                rows += "                                                        <tr><td>Account number:" + row['buyerAccountNumber'] + "</td><tr>"
+                                rows += "                                              </table>"
+                                rows += "                                          </div>"
+                                rows += "                                          <div class='modal-footer'>"
+                                rows += "                                              <button type='button' class='btn btn-secondary' data-dismiss='modal'>Close</button>"
+                                rows += "                                              <button type='button' class='btn btn-primary'>Save changes</button>"
+                                rows += "                                          </div>"
+                                rows += "                                      </div>"
+                                rows += "                                  </div>"
+                                rows += "                              </div>"
+
+                                return rows;
+                            }
+                        },
+                        {
+                            data: "transactionStatus",
+                            render: function (data, type, row) {
+                                var htm = "";
+                                htm += "<span style='color:" + row["transactionStatus"] + "'>" + row["reasons"] + "</span>";
+                                return htm;
+                            }
+                        },
+                        
+                        {
+                            data: "reasons",
+                            render: function (data, type, row) {
+                                var htm = "Transaction deleted";                                 
+                                return htm;
+                            }
+                        },
+                        
+                        {
+                            data: "processedBy",
+                            render: function (data, type, row) {
+
+                                var htm = '';
+                                var procby = row["processedBy"] == null ? "-" : row["processedBy"]
+                                htm += " " + procby + " "
+                                return htm;
+                            }
+                        },
+                         
+                    ]
+
+                }
+            );
 
             /*window.onresize = function() {
                 table.responsive.rebuild();

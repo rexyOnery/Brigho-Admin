@@ -35,7 +35,27 @@ namespace Vehicle.Controllers
             return Server.GetInProgressCurrentDasboad<Ahhttransaction>();
         }
 
-        
+        public List<Ahhttransaction> GetCompletedTransaction()
+        {
+            return Server.GetCompletedDashboard<Ahhttransaction>();
+        }
+
+        public List<Ahhttransaction> GetReturnedTransaction()
+        {
+            return Server.GetReturnedDashboard<Ahhttransaction>();
+        }
+
+        public List<Ahhttransaction> GetCancelledTransaction()
+        {
+            return Server.GetCancelledDashboard<Ahhttransaction>();
+        }
+
+        public List<Ahhttransaction> GetDeletedTransaction()
+        {
+            return Server.GetDeletedDashboard<Ahhttransaction>();
+        }
+
+
         public void Process(int Id, string processby)
         {
              Server.Process<Ahhttransaction>(Id, processby);
